@@ -5,7 +5,7 @@ body, html{
 
 
 .header {
-    position: sticky;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -15,10 +15,12 @@ body, html{
     align-items: center;
     background-color: var(--bg-color-lighter);
     z-index: 999;
- 
+    box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.1);
+
  }
 
  .header nav {
+
  }
 
  .header nav ul {

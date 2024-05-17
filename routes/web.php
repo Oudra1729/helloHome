@@ -25,6 +25,8 @@ Route::get('/', [PropertyController::class, 'index']);
 
 Route::get('/acceuil', [PropertyController::class, 'index']);
 
+// Search route
+Route::get('/result', [PropertyController::class, 'search'])->name('search');
 
 Route::get('/properties/achats', [PropertyController::class, 'vender']);
 

@@ -9,12 +9,44 @@ class PropertyController extends Controller
     public function index()
     {
         // جلب جميع العقارات مع صورهم
-        $properties = Property::with('images')->get();
+        $properties = Property::with('images')->paginate(6);
 
         // // إرجاع العرض مع العقارات
         // return view('properties.index', compact('properties'));
         return view('acceuil', compact('properties'));
     }
+
+    public function search(Request $request)
+    {
+        // Get search parameters from the request
+        $type = $request->input('type');
+        $city = $request->input('city');
+        $price = $request->input('price');
+        $status = $request->input('status');
+
+        // Build the query
+        $query = Property::query();
+
+        if ($type) {
+            $query->where('type', $type);
+        }
+        if ($city) {
+            $query->where('city', $city);
+        }
+        if ($price) {
+            $query->where('price', '<=', $price);
+        }
+        if ($status) {
+            $query->where('status', $status);
+        }
+
+        // Get the results
+        $properties = $query->get();
+
+        // Return the results to the search view
+        return view('result', compact('properties'));
+    }
+
     public function vender()
     {
         // جلب العقارات المعروضة للبيع فقط

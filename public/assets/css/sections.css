@@ -1,5 +1,6 @@
-/* FIXME: THIS IS GLOBAL ! */
+/* FIXME: THIS IS GLOBAL !
 section .carousel .item {
+
    box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.1);
    border: 1px solid rgba(0, 0, 0, 0.2);
 }
@@ -63,6 +64,7 @@ section .carousel .item .item-body .info-1 > div {
 }
 
 /* FIXME */
+/*
 section .carousel .item .item-body .info-2 .iconed img {
    width: 30px;
 }
@@ -91,4 +93,4 @@ section .carousel .item .item-body .info-2 a {
 section .item .info-set  {
 
    margin-bottom: 4px !important;
-}
+} */

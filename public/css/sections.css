@@ -7,6 +7,9 @@ section .carousel .item {
  section .carousel .item {
     font-size: 14px;
  }
+ section .titles h1{
+    font-size: 44px;
+ }
 
  .iconed img {
     width: 18px !important;

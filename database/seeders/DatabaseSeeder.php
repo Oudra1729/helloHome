@@ -14,8 +14,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // إنشاء 10 مستخدمين
-        User::factory(10)->create()->each(function ($user) {
+
+        //إنشاء 10 مستخدمين
+        User::factory(5)->create()->each(function ($user) {
             $user->properties()->saveMany(
                 Property::factory(5)->make()
             )->each(function ($property) {
