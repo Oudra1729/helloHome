@@ -1,0 +1,48 @@
+/***** Header **********************************************/
+
+body, html{
+   overflow-x: hidden;
+}
+
+.header {
+   position: sticky;
+   top: 0;
+   left: 0;
+   right: 0;
+   padding: 8px var(--x-padding);
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   background-color: var(--bg-color-lighter);
+   z-index: 999;
+  
+}
+
+.header nav {
+}
+
+.header nav ul {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   gap: 20px;
+   list-style: none;
+}
+
+.header nav ul li {
+   border-bottom: 2px solid transparent;
+   padding-left: 6px;
+   padding-right: 6px;
+}
+.header nav ul li:hover {
+   border-bottom: 2px solid var(--primary-color);
+   transform: border 1s;
+}
+
+.header nav ul #inscription-btn:hover {
+   border-color: transparent !important;
+}
+
+.header nav ul li a {
+   font-size: 14px;
+}

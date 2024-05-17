@@ -1,0 +1,25 @@
+/***** Section 2 *******************************************/
+.section-2 {
+}
+
+.section-2 .carousel {
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr;
+   column-gap: 36px;
+}
+
+.section-2 .navs {
+   margin-top: 16px;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+.section-2 .navs * {
+   border-bottom: 1px solid transparent;
+}
+
+.section-2 .navs *:hover {
+   scale: 1.05;
+   border-bottom: 1px solid var(--primary-color);
+}

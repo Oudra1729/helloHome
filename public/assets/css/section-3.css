@@ -1,0 +1,39 @@
+/***** Section 3 *******************************************/
+.section-3 {
+}
+
+.section-3 .carousel {
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr;
+   grid-template-rows: 1fr 1fr 1fr;
+   column-gap: 36px;
+   row-gap: 36px;
+}
+
+.section-3 .navs {
+   display: flex;
+   justify-content: center;
+   margin-top: 32px;
+}
+
+.section-3 .navs .pagination *:hover {
+   scale: 1.14;
+}
+.section-3 .navs .pagination {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   gap: 16px;
+   width: 25%;
+}
+.section-3 .navs .pagination .page-num {
+   text-align: center;
+   vertical-align: middle;
+   padding: 8px;
+   width: 36px;
+   height: 36px;
+   border: 1px solid rgba(0, 0, 0, 0.2);
+   border-radius: 4px;
+   text-decoration: none;
+   color: var(--primary-color);
+}

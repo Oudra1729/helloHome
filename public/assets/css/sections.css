@@ -1,0 +1,94 @@
+/* FIXME: THIS IS GLOBAL ! */
+section .carousel .item {
+   box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.1);
+   border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+section .carousel .item {
+   font-size: 14px;
+}
+
+.iconed img {
+   width: 18px !important;
+}
+
+.iconed .custom-icon {
+   height: 18px !important;
+   width: auto !important;
+}
+
+section .carousel .item:hover {
+   scale: 1.01;
+   border-bottom: 1px solid var(--primary-color) !important;
+}
+
+section .carousel .item .item-img {
+   position: relative;
+}
+
+section .carousel .item .item-img img {
+   width: 100%;
+   object-fit: cover;
+}
+
+section .carousel .item .item-img label {
+   position: absolute;
+   background-color: var(--bg-color);
+   top: 16px;
+   font-size: 14px;
+   padding: 1px 8px;
+}
+
+section .carousel .item .item-body {
+   padding: 8px 16px;
+}
+
+section .carousel .item .iconed {
+   display: flex;
+   justify-content: left;
+   align-items: center;
+   gap: 6px;
+}
+
+section .carousel .item .iconed img {
+   width: 16px;
+}
+
+section .carousel .item .item-body .info-1 {
+   display: flex;
+   justify-content: space-between;
+}
+
+section .carousel .item .item-body .info-1 > div {
+}
+
+/* FIXME */
+section .carousel .item .item-body .info-2 .iconed img {
+   width: 30px;
+}
+section .carousel .item .item-body .info-2 {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   gap: 32px;
+}
+
+section .carousel .item .item-body .info-2 > div {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   flex: 1;
+}
+
+section .carousel .item .item-body .info-2 a {
+   text-decoration: none;
+   padding-top: 6px !important;
+   padding-bottom: 6px !important;
+   text-align: center;
+}
+
+
+section .item .info-set  {
+
+   margin-bottom: 4px !important;
+}

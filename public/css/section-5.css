@@ -1,0 +1,135 @@
+/***** Section 5 *******************************************/
+.section-5 {
+   padding-top: 50px;
+}
+.section-5 > div {
+   margin-bottom: 30px;
+}
+
+.section-5 .title {
+   text-align: left;
+   font-size: 20px;
+   font-weight: bold;
+   margin-bottom: 12px;
+   color: var(--text-color-black);
+}
+
+.section-5 .subtitle {
+   margin-top: 16px;
+   text-align: left;
+   font-size: 22px;
+   margin-bottom: 10px;
+   color: var(--text-color-black);
+}
+
+.section-5 .faqs {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   gap: 32px;
+}
+
+.section-5 .faqs .text .title .subtitle {
+   font-family: Quicksand, Arial, Helvetica, sans-serif;
+   /*FIXME*/
+}
+
+.section-5 .faqs .text * {
+   text-align: left;
+   color: var(--text-color-black);
+}
+
+.section-5 .faqs .text p {
+   font-size: 15px;
+   line-height: 1.5;
+   font-family: Calibri; /* FIXME the font */
+   font-weight: normal;
+}
+
+.section-5 .suggestions {
+   margin-top: 46px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   gap: 40px;
+}
+
+.section-5 .suggestions .item * {
+   text-align: left;
+}
+
+.section-5 .suggestions .item .title {
+   font-size: 24px;
+   font-weight: bold;
+   margin-bottom: 8px;
+   color: var(--text-color-black);
+}
+
+.section-5 .suggestions .item p {
+   font-size: 24px;
+   margin-bottom: 24px;
+}
+
+.section-5 .suggestions .item .btn {
+   background-color: var(--bg-color-lighter);
+   border: 1px solid var(--primary-color) !important;
+   color: var(--primary-color) !important;
+   font-size: 18px;
+   margin-top: 16px;
+}
+
+.section-5 .temoignaages {
+   margin-top: 32;
+}
+
+.section-5 .temoignaages .subtitle {
+   font-size: 16px;
+   color: var(--text-color-light);
+}
+
+.section-5 .temoignaages .avis {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   gap: 40px;
+}
+
+.section-5 .temoignaages .avis .item {
+   display: flex;
+   justify-content: space-between;
+   flex-direction: column;
+   gap: 8px;
+}
+
+.section-5 .temoignaages .avis .rating {
+   /* FIXME : customize the rating stars */
+   display: flex;
+   justify-content: left;
+   gap: 4px;
+}
+
+.section-5 .temoignaages .avis .item .profile {
+   display: flex;
+   justify-content: left;
+   align-items: center;
+   gap: 6px;
+}
+
+.section-5 .temoignaages .avis .item .profile img {
+   width: 42px;
+   height: 40px;
+}
+
+.section-5 .temoignaages .avis .item .profile .name {
+   font-weight: bold;
+   padding: 0;
+   margin: 0;
+}
+
+.section-5 .temoignaages .navs {
+   display: flex;
+   justify-content: end;
+}
+
+.section-5 .temoignaages .navs > div {
+}
