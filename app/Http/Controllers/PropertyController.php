@@ -82,6 +82,7 @@ class PropertyController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'price' => 'required|numeric',
@@ -90,6 +91,7 @@ class PropertyController extends Controller
             'status' => 'required|string',
             'type' => 'required|string',
             'city' => 'required|string',
+            
         ]);
 
         $created_object = Property::create($request->all());

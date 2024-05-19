@@ -49,7 +49,7 @@
                 <div class="item-img">
                     <label><h2>{{ $property->status }}</h2></label>
                     @foreach ($property->images as $image)
-                        <img src="{{ $image->image_url }}" alt="Image of {{ $property->title }}">
+                        <img src="{{ $image->image_url }}" alt="Image of {{ $property->city }}">
                     @endforeach
                 </div>
                 <div class="item-body">
@@ -57,7 +57,7 @@
                         <div class="">
                             <div class="iconed info-set">
                                 <img src="{{ asset('assets/icons/location1.png') }}" alt="" />
-                                <p>{{ $property->title }}</p>
+                                <p>{{ $property->city }}</p>
                             </div>
                             <div class="iconed info-set">
                                 <img src="{{ asset('assets/icons/home-icon.png') }}" alt="" />

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('status'); // للبيع، للإيجار
             $table->string('type'); // فيلا, منزل, إلخ
             $table->string('city');
+            $table->string('space');
             $table->timestamps();
         });
 
