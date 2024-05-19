@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Image;
 use App\Models\Property;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PropertyController extends Controller
 {
@@ -91,16 +94,38 @@ class PropertyController extends Controller
             'status' => 'required|string',
             'type' => 'required|string',
             'city' => 'required|string',
-            
+
         ]);
 
-        $created_object = Property::create($request->all());
-        if($created_object){
-             $id= $created_object->id;
-             return view('insert_images',compact('id'));
+        $user_id=Auth()->user()->id;
+
+       $created_object=
+       Property::create([
+        'title' => $request->title,
+        'description' => $request->description,
+        'price' => $request->price,
+        'bedrooms' => $request->bedrooms,
+        'bathrooms' => $request->bathrooms,
+        'status' => $request->status,
+        'type' => $request->type,
+        'city' => $request->city,
+        'space' => $request->space,
+        'user_id' => $request->user_id,
+        ]);
+        // Property::create($request->all());
+        if ($created_object) {
+            $id = $created_object->id;
+            return view('insert_images', compact('id')); // Pass property ID to the view
         } else {
             return redirect()->route('properties.create')->withErrors(['error' => 'An error occurred while adding the property. Please try again.']);
         }
+        // if($created_object){
+        //      $id= $created_object->id;
+        //      return view('insert_images',compact('id'));
+        // } else {
+        //     return redirect()->route('properties.create')->withErrors(['error' => 'An error occurred while adding the property. Please try again.']);
+        // }
         // return redirect()->route('properties.store')->with('success', 'Property added successfully!');
     }
+
 }

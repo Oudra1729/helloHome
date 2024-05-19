@@ -80,7 +80,7 @@
                             </div>
                             <div class="iconed">
                                 <img src="{{ asset('assets/icons/ruler.png') }}" alt="" class="custom-icon" />
-                                <span>2097m²</span>
+                                <span>{{ $property->space }}m²</span>
                             </div>
                         </div>
                         <a href="#" class="btn">Détails</a>
@@ -92,7 +92,7 @@
 
     <div class="pagination">
         {{-- Pagination links --}}
-        {{ $properties->links() }}
+        {{-- {{ $properties->links() }} --}}
     </div>
 </section>
 

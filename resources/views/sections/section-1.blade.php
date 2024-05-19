@@ -29,7 +29,13 @@
                 <div class="separator"></div>
                 <div class="input-decorated">
                     <img src="{{ asset('assets/icons/home-icon.png') }}" alt="icon" class="icon" />
-                    <input type="text" placeholder="Type de bien (ex: maison, appartement, terrain, etc.)" name="type" id="type" />
+                    <select name="type" id="">
+                        <option value="">Choisissez votre type</option>
+                        @foreach ($properties as $property)
+                        <option value="{{ $property->type }}">{{ $property->type }}</option>
+                       @endforeach
+                    </select>
+                    {{-- <input type="text" placeholder="Type de bien (ex: maison, appartement, terrain, etc.)" name="type" id="type" /> --}}
                 </div>
                 <div class="separator"></div>
                 <div class="input-decorated">
@@ -61,7 +67,7 @@
             document.querySelectorAll('.section-1 .actions .choices label').forEach(lbl => lbl.classList.remove('clicked'));
 
             // Add 'clicked' class to the clicked label
-            this.classList.add('clicked');
+            e
         });
     });
 </script>

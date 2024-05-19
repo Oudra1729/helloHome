@@ -10,7 +10,18 @@
             <li><a href="#" class="link">Vendre</a></li>
             <li><a href="#" class="link">Services</a></li>
             <li id="inscription-btn">
-                <a href="" class="link btn">Inscription</a>
+
+                @if (Auth()->user())
+                    <h4>{{ Auth()->user()->name }}</h4>
+                    <a class="btn btn-link" href="{{ route('logout') }}">
+                        {{ __('Deconnexion') }}
+                    </a>
+                @else
+                    <a class="btn btn-link" href="{{ route('login') }}">
+                        {{ __('Inscription') }}
+                    </a>
+                @endif
+                {{-- <a href="" class="link btn"></a> --}}
             </li>
         </ul>
     </nav>

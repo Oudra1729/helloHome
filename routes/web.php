@@ -1,6 +1,9 @@
 <?php
+
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\LoginController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,8 +46,18 @@ Route::get('/properties/ajouter', [PropertyController::class, 'create'])->name('
 // Route to handle the form submission
 Route::post('/properties', [PropertyController::class, 'store'])->name('properties.store');
 
+Route::post('/image/create', [ImageController::class, 'store'])->name('image.store');
+
+Route::post('/images/store', [ImageController::class, 'store'])->name('images.store');
 
 
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::get('logout', [App\Http\Controllers\LoginController::class,'logout'])->name('logout');

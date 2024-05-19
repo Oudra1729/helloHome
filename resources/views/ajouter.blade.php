@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="">
     <h1>إضافة عقار جديد</h1>
     <form action="{{ route('properties.store') }}" method="POST" enctype="multipart/form-data">
         {{-- @if (session('success'))
@@ -11,6 +11,12 @@
     @endif --}}
 
         @csrf
+        {{-- <div class="form-group"> --}}
+            <input type="hidden" name="user_id" value="{{ Auth()->user()->id }}">
+
+            {{-- <label for="title"></label>
+            <input type="text" class="form-control" id="title" name="title" required>
+        </div> --}}
         <div class="form-group">
             {{-- <input type="hidden" name="user_id" value="{{ auth()->user()->id }}"> --}}
 
@@ -26,6 +32,10 @@
             <input type="number" class="form-control" id="price" name="price" required>
         </div>
         <div class="form-group">
+            <label for="space">space:</label>
+            <input type="number" class="form-control" id="space" name="space" required>
+        </div>
+        <div class="form-group">
             <label for="bedrooms">عدد غرف النوم:</label>
             <input type="number" class="form-control" id="bedrooms" name="bedrooms" required>
         </div>
@@ -33,6 +43,7 @@
             <label for="bathrooms">عدد الحمامات:</label>
             <input type="number" class="form-control" id="bathrooms" name="bathrooms" required>
         </div>
+        
         <div class="form-group">
             <label for="status">الحالة:</label>
             <select class="form-control" id="status" name="status">
@@ -48,11 +59,12 @@
                 <option value="منزل">منزل</option>
             </select>
         </div>
+
         <div class="form-group">
             <label for="city">المدينة:</label>
             <input type="text" class="form-control" id="city" name="city" required>
         </div>
-        <button type="submit" class="btn btn-primary">إضافة</button>
+        <button type="submit" class="btn btn-primary">التالي </button>
     </form>
 </div>
 @endsection

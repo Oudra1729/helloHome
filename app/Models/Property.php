@@ -13,12 +13,14 @@ class Property extends Model
         return $this->hasMany(Image::class, 'property_id');
     }
     protected $fillable = [
+        'user_id',
         'title',
         'description',
         'price',
         'bedrooms',
         'bathrooms',
         'status',
+        'space',
         'type',
         'city'
     ];

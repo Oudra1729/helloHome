@@ -27,9 +27,10 @@ class DatabaseSeeder extends Seeder
         });
 
         // كود إضافي لإنشاء مستخدم محدد
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        User::factory()->create([
+            'name' => 'brahim',
+            'email' => 'brahim@brahim.com',
+            'password' => 'brahim@123',
+        ]);
     }
 }
