@@ -4,21 +4,16 @@
 <div class="">
     <h1>إضافة عقار جديد</h1>
     <form action="{{ route('properties.store') }}" method="POST" enctype="multipart/form-data">
-        {{-- @if (session('success'))
+        @if (session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
         </div>
-    @endif --}}
+    @endif
 
         @csrf
-        {{-- <div class="form-group"> --}}
-            <input type="hidden" name="user_id" value="{{ Auth()->user()->id }}">
-
-            {{-- <label for="title"></label>
-            <input type="text" class="form-control" id="title" name="title" required>
-        </div> --}}
         <div class="form-group">
-            {{-- <input type="hidden" name="user_id" value="{{ auth()->user()->id }}"> --}}
+
+            <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
 
             <label for="title">العنوان:</label>
             <input type="text" class="form-control" id="title" name="title" required>
@@ -43,7 +38,7 @@
             <label for="bathrooms">عدد الحمامات:</label>
             <input type="number" class="form-control" id="bathrooms" name="bathrooms" required>
         </div>
-        
+
         <div class="form-group">
             <label for="status">الحالة:</label>
             <select class="form-control" id="status" name="status">

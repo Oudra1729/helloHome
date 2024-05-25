@@ -1,17 +1,14 @@
 <?php
+// database/factories/PropertyFactory.php
+
 namespace Database\Factories;
 
+use App\Models\Property;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Property; // تأكد من إضافة نموذج Property
-use App\Models\User; // تأكد من استيراد نموذج User
 
 class PropertyFactory extends Factory
 {
-    /**
-     * The name of the factory's corresponding model.
-     *
-     * @var string
-     */
     protected $model = Property::class;
 
     /**
@@ -22,15 +19,16 @@ class PropertyFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::pluck('id')->random(),
-            'title' => $this->faker->words(3, true),
-            'description' => $this->faker->text,
-            'price' => $this->faker->numberBetween(1000000, 5000000),
+            'user_id' => User::factory(),
+            'title' => $this->faker->sentence,
+            'description' => $this->faker->paragraph,
+            'price' => $this->faker->numberBetween(100000, 1000000),
             'bedrooms' => $this->faker->numberBetween(1, 5),
             'bathrooms' => $this->faker->numberBetween(1, 3),
             'status' => $this->faker->randomElement(['للبيع', 'للإيجار']),
-            'type' => $this->faker->randomElement(['فيلا', 'شقة', 'منزل']),
-            'city' => $this->faker->city
+            'type' => $this->faker->randomElement(['منزل', 'شقة']),
+            'city' => $this->faker->city,
+            'space' => $this->faker->numberBetween(50, 500), // Provide a value for space
         ];
     }
 }

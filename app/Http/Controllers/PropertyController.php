@@ -94,6 +94,7 @@ class PropertyController extends Controller
             'status' => 'required|string',
             'type' => 'required|string',
             'city' => 'required|string',
+            'space' => 'required|int',
 
         ]);
 
@@ -115,7 +116,7 @@ class PropertyController extends Controller
         // Property::create($request->all());
         if ($created_object) {
             $id = $created_object->id;
-            return view('insert_images', compact('id')); // Pass property ID to the view
+            return view('acceuil', compact('properties'));
         } else {
             return redirect()->route('properties.create')->withErrors(['error' => 'An error occurred while adding the property. Please try again.']);
         }

@@ -38,9 +38,12 @@ Route::get('/properties/louer', [PropertyController::class, 'louer']);
 // Route::get('/ajouter', [PropertyController::class, 'ajouter'])->name('ajouter');
 
 
-
-// Route to display the form
-Route::get('/properties/ajouter', [PropertyController::class, 'create'])->name('properties.create');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/properties/create', [PropertyController::class, 'create'])->name('properties.create');
+    Route::post('/properties', [PropertyController::class, 'store'])->name('properties.store');
+});
+// // Route to display the form
+// Route::get('/properties/ajouter', [PropertyController::class, 'create'])->name('properties.create');
 
 
 // Route to handle the form submission
