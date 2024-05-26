@@ -12,8 +12,8 @@
 
         @csrf
         <div class="form-group">
-
-            <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+{{--
+            <input type="hidden" name="user_id" value="{{ auth()->user()->id }}"> --}}
 
             <label for="title">العنوان:</label>
             <input type="text" class="form-control" id="title" name="title" required>

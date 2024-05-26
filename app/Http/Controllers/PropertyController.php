@@ -82,51 +82,43 @@ class PropertyController extends Controller
      }
 
 
-    public function store(Request $request)
-    {
-        $request->validate([
+     public function store(Request $request)
+     {
+         $request->validate([
+             'title' => 'required|string|max:255',
+             'description' => 'required|string',
+             'price' => 'required|numeric',
+             'bedrooms' => 'required|integer',
+             'bathrooms' => 'required|integer',
+             'status' => 'required|string',
+             'type' => 'required|string',
+             'city' => 'required|string',
+             'space' => 'required|integer',
+             'user_id' => 'sometimes|integer',  // Make user_id optional and integer
+         ]);
 
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'price' => 'required|numeric',
-            'bedrooms' => 'required|int',
-            'bathrooms' => 'required|int',
-            'status' => 'required|string',
-            'type' => 'required|string',
-            'city' => 'required|string',
-            'space' => 'required|int',
+         // Create the property
+         $created_object = Property::create([
+             'title' => $request->title,
+             'description' => $request->description,
+             'price' => $request->price,
+             'bedrooms' => $request->bedrooms,
+             'bathrooms' => $request->bathrooms,
+             'status' => $request->status,
+             'type' => $request->type,
+             'city' => $request->city,
+             'space' => $request->space,
+             'user_id' => $request->user_id ?? 1,  // Default to 1 if user_id is not provided
+         ]);
 
-        ]);
+         if ($created_object) {
+             // Fetch paginated properties to pass to the view
+             $properties = Property::paginate(6);
+             return view('acceuil', compact('properties'));
+         } else {
+             return redirect()->route('properties.create')->withErrors(['error' => 'An error occurred while adding the property. Please try again.']);
+         }
+     }
 
-        $user_id=Auth()->user()->id;
-
-       $created_object=
-       Property::create([
-        'title' => $request->title,
-        'description' => $request->description,
-        'price' => $request->price,
-        'bedrooms' => $request->bedrooms,
-        'bathrooms' => $request->bathrooms,
-        'status' => $request->status,
-        'type' => $request->type,
-        'city' => $request->city,
-        'space' => $request->space,
-        'user_id' => $request->user_id,
-        ]);
-        // Property::create($request->all());
-        if ($created_object) {
-            $id = $created_object->id;
-            return view('acceuil', compact('properties'));
-        } else {
-            return redirect()->route('properties.create')->withErrors(['error' => 'An error occurred while adding the property. Please try again.']);
-        }
-        // if($created_object){
-        //      $id= $created_object->id;
-        //      return view('insert_images',compact('id'));
-        // } else {
-        //     return redirect()->route('properties.create')->withErrors(['error' => 'An error occurred while adding the property. Please try again.']);
-        // }
-        // return redirect()->route('properties.store')->with('success', 'Property added successfully!');
-    }
 
 }

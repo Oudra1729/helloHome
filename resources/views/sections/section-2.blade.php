@@ -13,24 +13,33 @@
         .carousel .item-img {
             overflow: hidden;
             position: relative;
-            width: 100%; /* Adjust this as needed */
-            height: 300px; /* Adjust this as needed */
+            width: 100%;
+            height: 200px;
         }
         .pagination {
             display: flex;
             justify-content: space-between;
             font-size: 20px;
             margin-top: 20px;
-
-
         }
-
-        .pagination   {
+        .pagination {
             width: 40px !important;
-
         }
-
-
+        .image-container {
+            position: relative;
+        }
+        .image-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .image-container img.active {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
@@ -46,10 +55,10 @@
     <div class="carousel">
         @foreach ($properties as $property)
             <div class="item">
-                <div class="item-img">
+                <div class="item-img image-container">
                     <label><h2>{{ $property->status }}</h2></label>
                     @foreach ($property->images as $image)
-                        <img src="{{ asset('storage/images/' .$image->image_path) }}" alt="Image of {{ $property->city }}">
+                        <img src="{{ asset('storage/images/' . $image->image_path) }}" alt="Image of {{ $property->city }}">
                     @endforeach
                 </div>
                 <div class="item-body">
@@ -95,6 +104,47 @@
         {{ $properties->links() }}
     </div>
 </section>
+
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const carousels = document.querySelectorAll('.image-container');
+
+        carousels.forEach(container => {
+            const images = container.querySelectorAll('img');
+            let currentIndex = 0;
+
+            // Function to show the next image
+            const showNextImage = () => {
+                images[currentIndex].classList.remove('active');
+                currentIndex = (currentIndex + 1) % images.length;
+                images[currentIndex].classList.add('active');
+            };
+
+            // Show the first image initially
+            if (images.length > 0) {
+                images[0].classList.add('active');
+            }
+
+            // Change images every 3 seconds
+            let interval = setInterval(showNextImage, 3000);
+
+            // Pause the interval on mouse enter and resume on mouse leave
+            container.addEventListener('mouseenter', () => {
+                clearInterval(interval);
+            });
+
+            container.addEventListener('mouseleave', () => {
+                interval = setInterval(showNextImage, 3000);
+            });
+
+            // Change image on click
+            container.addEventListener('click', showNextImage);
+        });
+    });
+    </script>
 
 </body>
 </html>
