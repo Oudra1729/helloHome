@@ -6,7 +6,7 @@
     <title>My Page</title>
     {{-- Uncomment the following line if you're using Bootstrap --}}
     {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"> --}}
-    {{-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@^2.0/dist/tailwind.min.css" rel="stylesheet"> --}}
+
     <link rel="stylesheet" href="{{ asset('css/tilwind.css') }}">
 
     <style>
