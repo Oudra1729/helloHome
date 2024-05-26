@@ -45,9 +45,7 @@ class PropertyController extends Controller
 
         // Get the results
         $properties = $query->get();
-   dd(
-    $properties
-   );
+
         // Return the results to the search view
         return view('result', compact('properties'));
     }
@@ -57,8 +55,8 @@ class PropertyController extends Controller
         // جلب العقارات المعروضة للبيع فقط
         $properties = Property::with('images')
                               ->where('status', 'للبيع')
-                              ->get();
 
+                              ->get();
         // إرجاع العرض مع العقارات
         return view('properties.index', compact('properties'));
     }
