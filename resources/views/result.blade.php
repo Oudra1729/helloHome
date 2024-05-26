@@ -1,7 +1,9 @@
 <!-- resources/views/properties/search.blade.php -->
 
 @extends('layouts.app')
-
+@dd(
+    $properties
+)
 @section('content')
     <div class="search-results">
         <h1>Résultats de la recherche</h1>

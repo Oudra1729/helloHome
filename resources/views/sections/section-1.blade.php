@@ -59,7 +59,7 @@
         </form>
     </div>
 </section>
-
+{{--
 <script>
     document.querySelectorAll('.section-1 .actions .choices label').forEach(label => {
         label.addEventListener('click', function() {
@@ -100,4 +100,59 @@
         });
     });
 
+</script> --}}
+<script>
+    document.querySelectorAll('.section-1 .actions .choices label').forEach(label => {
+        label.addEventListener('click', function() {
+            // Remove 'clicked' class from all labels
+            document.querySelectorAll('.section-1 .actions .choices label').forEach(lbl => lbl.classList.remove('clicked'));
+
+            // Add 'clicked' class to the clicked label
+            this.classList.add('clicked');
+        });
+    });
+
+
+//Initialize the Select2 plugin and set the maximum number of items to display without scrolling:
+$(document).ready(function() {
+        $('#property-select').select2({
+            maximumSelectionLength: 5,
+            placeholder: 'Choisissez votre type',
+            allowClear: true
+        });
+    });
+
+
 </script>
+<script>
+    $(document).ready(function() {
+        $('#property-select').select2({
+            tags: true,
+            maximumSelectionLength: 5,
+            placeholder: 'Choisissez votre type',
+            allowClear: true,
+            createTag: function(params) {
+                return {
+                    id: params.term,
+                    text: params.term,
+                    newOption: true
+                };
+            },
+            templateResult: function(data) {
+                var $result = $("<span></span>");
+
+                $result.text(data.text);
+
+                if (data.newOption) {
+                    $result.append(" <em>(new)</em>");
+                }
+
+                return $result;
+            }
+        });
+    });
+</script>
+
+
+
+{{-- ghjkhhhhhhh --}}
