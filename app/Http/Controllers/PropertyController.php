@@ -6,6 +6,7 @@ use App\Models\Image;
 use App\Models\Property;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PropertyController extends Controller
 {
@@ -81,6 +82,12 @@ class PropertyController extends Controller
 
      }
 
+     public function show($id)
+     {
+         $property = Property::findOrFail($id);
+         $images = DB::table('images')->where('property_id', $id)->paginate(5);
+         return view('properties.Details', compact('property', 'images'));
+     }
 
      public function store(Request $request)
      {

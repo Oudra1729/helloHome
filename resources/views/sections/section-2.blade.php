@@ -22,7 +22,7 @@
             font-size: 20px;
             margin-top: 20px;
         }
-        .pagination {
+        .pagination a {
             width: 40px !important;
         }
         .image-container {
@@ -92,7 +92,7 @@
                                 <span>{{ $property->space }}m²</span>
                             </div>
                         </div>
-                        <a href="#" class="btn">Détails</a>
+                        <a href="{{ route('details', $property->id) }}" class="btn">Détails</a>
                     </div>
                 </div>
             </div>
@@ -105,46 +105,43 @@
     </div>
 </section>
 
-
-
-
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const carousels = document.querySelectorAll('.image-container');
+document.addEventListener("DOMContentLoaded", function() {
+    const carousels = document.querySelectorAll('.image-container');
 
-        carousels.forEach(container => {
-            const images = container.querySelectorAll('img');
-            let currentIndex = 0;
+    carousels.forEach(container => {
+        const images = container.querySelectorAll('img');
+        let currentIndex = 0;
 
-            // Function to show the next image
-            const showNextImage = () => {
-                images[currentIndex].classList.remove('active');
-                currentIndex = (currentIndex + 1) % images.length;
-                images[currentIndex].classList.add('active');
-            };
+        // Function to show the next image
+        const showNextImage = () => {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add('active');
+        };
 
-            // Show the first image initially
-            if (images.length > 0) {
-                images[0].classList.add('active');
-            }
+        // Show the first image initially
+        if (images.length > 0) {
+            images[0].classList.add('active');
+        }
 
-            // Change images every 3 seconds
-            let interval = setInterval(showNextImage, 3000);
+        // Change images every 3 seconds
+        let interval = setInterval(showNextImage, 3000);
 
-            // Pause the interval on mouse enter and resume on mouse leave
-            container.addEventListener('mouseenter', () => {
-                clearInterval(interval);
-            });
-
-            container.addEventListener('mouseleave', () => {
-                interval = setInterval(showNextImage, 3000);
-            });
-
-            // Change image on click
-            container.addEventListener('click', showNextImage);
+        // Pause the interval on mouse enter and resume on mouse leave
+        container.addEventListener('mouseenter', () => {
+            clearInterval(interval);
         });
+
+        container.addEventListener('mouseleave', () => {
+            interval = setInterval(showNextImage, 3000);
+        });
+
+        // Change image on click
+        container.addEventListener('click', showNextImage);
     });
-    </script>
+});
+</script>
 
 </body>
 </html>

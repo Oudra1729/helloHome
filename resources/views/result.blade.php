@@ -1,9 +1,7 @@
 <!-- resources/views/properties/search.blade.php -->
 
 @extends('layouts.app')
-@dd(
-    $properties
-)
+
 @section('content')
     <div class="search-results">
         <h1>Résultats de la recherche</h1>
@@ -18,7 +16,7 @@
                     <p>Bedrooms: {{ $property->bedrooms }}</p>
                     <p>Bathrooms: {{ $property->bathrooms }}</p>
                     @foreach ($property->images as $image)
-                        <img src="{{ $image->image_url }}" alt="Image of {{ $property->title }}">
+                        <img src="{{ $image->image_path }}" alt="Image of {{ $property->title }}">
                     @endforeach
                 </div>
             @endforeach

@@ -14,11 +14,8 @@
 <body>
     <div class="container">
         @include('layouts.navbar.navbar')
-        {{-- @yield('content') --}}
         <main>
             @yield('content')
-
-
         </main>
         @include('layouts.footer.footer')
     </div>
