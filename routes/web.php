@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 // Display all properties and home page
 Route::get('/', [PropertyController::class, 'index'])->name('home');
 Route::get('/acceuil', [PropertyController::class, 'index']);
+Route::get('/properties', [PropertyController::class, 'index'])->name('properties.index');
 
 // Display properties for sale and rent
 Route::get('/properties/achats', [PropertyController::class, 'vendre'])->name('properties.achats');
@@ -39,3 +40,6 @@ Auth::routes();
 
 // Redirect to home after login
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/properties/achats', [PropertyController::class, 'vender'])->name('properties.achats');
+

@@ -1,21 +1,10 @@
 @extends('layouts.app')
+<header>
+    <link rel="stylesheet" href="{{ asset('css/filtring.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
 
+</header>
 @section('content')
-    <header class="header">
-        <a href="{{ url('/index.html') }}">
-            <img src="{{ asset('assets/icons/logo.png') }}" alt="logo" class="logo" />
-        </a>
-        <nav>
-            <ul>
-                <li><a href="{{ url('/index.html') }}" class="link">Accuiel</a></li>
-                <li><a href="#" class="link">Acheter</a></li>
-                <li><a href="#" class="link">Services</a></li>
-                <li id="inscription-btn">
-                    <a href="#" class="link btn">Inscription</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
 
     <div class="louer">
         <aside>
@@ -52,21 +41,22 @@
         </aside>
 
         <main class="content-wrap">
-            <div class="content">
-                <section class="person-boxes">
-                    <div class="person-box">
-                        <div class="property-card">
-                            <img src="{{ asset('assets/img/m2 2.png') }}" alt="Property Image" />
-                            <div class="property-info">
-                                <h2>$2500/M</h2>
-                                <p>Office, Barrio Allerdi</p>
-                                <p>3 Bedrooms - 60m²</p>
-                                <p>3 Baths - 3 Dormitories</p>
-                            </div>
-                        </div>
-                    </div>
+            <!-- resources/views/properties/index.blade.php -->
 
-                </section>
+
+<div class="container">
+    @foreach ($properties as $property)
+        <div class="property">
+            <h2>{{ $property->title }}</h2>
+            <p>{{ $property->description }}</p>
+            <p>Price: {{ $property->price }}</p>
+            <p>Bedrooms: {{ $property->bedrooms }}</p>
+            <p>Bathrooms: {{ $property->bathrooms }}</p>
+            @foreach ($property->images as $image)
+                <img src="{{ $image->image_url }}" alt="Image of {{ $property->title }}">
+            @endforeach
+        </div>
+    @endforeach
             </div>
         </main>
     </div>

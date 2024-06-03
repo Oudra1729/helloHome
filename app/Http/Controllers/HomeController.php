@@ -24,32 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // Get search parameters from the request
-        // $type = $request->input('type');
-        // $city = $request->input('city');
-        // $price = $request->input('price');
-        // $status = $request->input('status');
-
-        // Build the query
-        // $query = Property::query();
-
-        // if ($type) {
-        //     $query->where('type', $type);
-        // }
-        // if ($city) {
-        //     $query->where('city', $city);
-        // }
-        // if ($price) {
-        //     $query->where('price', '<=', $price);
-        // }
-        // if ($status) {
-        //     $query->where('status', $status);
-        // }
-
-        // Get the results
-        // $properties = $query->get();
-        $properties=Property::All();
-        return view('home',compact('properties'));
+        $properties = Property::paginate(6); // استخدم paginate مباشرةً على النموذج
+        return view('home', compact('properties'));
     }
+
 
 }

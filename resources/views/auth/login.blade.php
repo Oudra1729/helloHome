@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+<header>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+
+</header>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -58,7 +62,7 @@
                                 </button>
 
                                 {{-- @if (Route::has('password.request')) --}}
-                                    <a class="btn btn-link" href="{{ route('register') }}">
+                                    <a class="btn btn-primary" href="{{ route('register') }}">
                                         {{ __('Register') }}
                                     </a>
                                 {{-- @endif --}}

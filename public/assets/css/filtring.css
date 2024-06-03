@@ -1,0 +1,67 @@
+
+html, body {
+    height: 100%;
+    overflow: auto; /* Ensures content can scroll if it exceeds the viewport */
+    background-color: rgb(255, 255, 255);
+}
+
+/* Base styles for the louer section */
+.louer {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px var(--x-padding);
+}
+
+/* Styling for the aside section within louer */
+.louer aside {
+    flex: 2;
+    background-color: rgb(255, 255, 255);
+    padding: 16px 32px 16px 32px; /* Adjust the padding as needed */
+    min-width: 200px;
+    border-right: 2px solid #ccc;
+}
+
+
+/* Title styles within forms in the aside section */
+.louer aside form .title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+/* Container div styles within forms */
+.louer aside form > div > div {
+    margin-top: 10px;
+    margin-left: 24px;
+    margin-bottom: 24px;
+}
+
+/* General child element margin in div containers */
+.louer aside form > div > div * {
+    margin-top: 5px;
+}
+
+/* Button styling in the aside section */
+.louer aside form button {
+    width: 75%;
+    padding: 8px 16px;
+    font-size: 16px;
+    background-color: var(--primary-color);
+    color: var(--text-color-white);
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+/* Button hover effect */
+.louer aside form button:hover {
+    background-color: var(--text-color-white);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+/* Styles for the main content area */
+.louer main {
+    flex: 8; /* Adjust flex value as needed to balance space */
+    padding: 16px;
+}
+

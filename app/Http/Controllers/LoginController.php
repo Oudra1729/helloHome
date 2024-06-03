@@ -19,7 +19,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             // Authentication passed...
-            return redirect()->intended('accueil');
+            return redirect()->intended('home');
         }
 
         return back()->withErrors([
@@ -32,7 +32,7 @@ class LoginController extends Controller
 
         $request->session()->invalidate();
 
-        return redirect('/login');
+        return redirect('home');
     }
 
 }
