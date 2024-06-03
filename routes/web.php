@@ -11,7 +11,7 @@ Route::get('/acceuil', [PropertyController::class, 'index']);
 Route::get('/properties', [PropertyController::class, 'index'])->name('properties.index');
 
 // Display properties for sale and rent
-Route::get('/properties/achats', [PropertyController::class, 'vendre'])->name('properties.achats');
+Route::get('/properties/achats', [PropertyController::class, 'acheter'])->name('properties.achats');
 Route::get('/properties/louer', [PropertyController::class, 'louer'])->name('properties.louer');
 
 // Display property details
@@ -41,5 +41,5 @@ Auth::routes();
 // Redirect to home after login
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/properties/achats', [PropertyController::class, 'vender'])->name('properties.achats');
+Route::get('/properties/achater', [PropertyController::class, 'vender'])->name('properties.achats');
 

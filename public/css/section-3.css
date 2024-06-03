@@ -1,39 +1,137 @@
 /***** Section 3 *******************************************/
 .section-3 {
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+.section-3 .titles h1 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.section-3 .titles h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #777;
+    font-size: 16px;
 }
 
 .section-3 .carousel {
-   display: grid;
-   grid-template-columns: 1fr 1fr 1fr;
-   grid-template-rows: 1fr 1fr 1fr;
-   column-gap: 36px;
-   row-gap: 36px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.section-3 .item {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.section-3 .item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.section-3 .item-img {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.section-3 .item-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.section-3 .item-img img:hover {
+    transform: scale(1.1);
+}
+
+.section-3 .item-body {
+    padding: 16px;
+}
+
+.section-3 .info-1, .section-3 .info-2 {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.section-3 .info-set {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.section-3 .iconed img {
+    width: 24px;
+    height: 24px;
+}
+
+.section-3 .price span {
+    font-weight: bold;
+    color: #e67e22;
+}
+
+.section-3 .btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.section-3 .btn:hover {
+    background-color: darken(var(--primary-color), 10%);
 }
 
 .section-3 .navs {
-   display: flex;
-   justify-content: center;
-   margin-top: 32px;
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
 }
 
 .section-3 .navs .pagination *:hover {
-   scale: 1.14;
+    transform: scale(1.14);
 }
+
 .section-3 .navs .pagination {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   gap: 16px;
-   width: 25%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    width: 25%;
 }
+
 .section-3 .navs .pagination .page-num {
-   text-align: center;
-   vertical-align: middle;
-   padding: 8px;
-   width: 36px;
-   height: 36px;
-   border: 1px solid rgba(0, 0, 0, 0.2);
-   border-radius: 4px;
-   text-decoration: none;
-   color: var(--primary-color);
+    text-align: center;
+    vertical-align: middle;
+    padding: 8px;
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.section-3 .navs .pagination .page-num:hover {
+    transform: scale(1.14);
+    background-color: rgba(0, 0, 0, 0.1);
 }

@@ -46,9 +46,10 @@
 
 <section class="section-2">
     <div class="titles">
-        <h1>Explorez nos annonces de qualité supérieure</h1>
+        <h1>Trouvez votre maison de rêve dès maintenant</h1>
         <h3>
-            Nous sommes là pour vous guider dans votre recherche d'un bien hellohome à louer au Maroc sur hellohome.com
+            Découvrez notre sélection exclusive de propriétés à vendre,
+            à acheter et à louer.
         </h3>
     </div>
 

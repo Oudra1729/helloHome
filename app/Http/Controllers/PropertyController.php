@@ -59,7 +59,7 @@ class PropertyController extends Controller
 
                               ->get();
         // إرجاع العرض مع العقارات
-        return view('filtring/acheter', compact('properties'));
+        return view('properties/acheter', compact('properties'));
     }
     public function louer()
     {

@@ -3,6 +3,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -34,5 +35,16 @@ class LoginController extends Controller
 
         return redirect('home');
     }
+    // In your controller or helper class
+ // Import the User model
+
+function isUserRegistered($email) {
+    // Check if a user with the provided email address exists in the database
+    $user = User::where('email', $email)->first();
+
+    // Return true if the user exists, otherwise false
+    return $user !== null;
+}
+
 
 }

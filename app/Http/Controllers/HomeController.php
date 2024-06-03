@@ -27,6 +27,15 @@ class HomeController extends Controller
         $properties = Property::paginate(6); // استخدم paginate مباشرةً على النموذج
         return view('home', compact('properties'));
     }
+    public function index2(Request $request)
+{
+    $properties = Property::with('images')
+        ->where('qualite', 'جيدة')
+        ->take(4)
+        ->get();
+
+    return view('acceuil', compact('properties'));
+}
 
 
 }
