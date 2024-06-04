@@ -102,7 +102,7 @@
                                     <span>{{ $property->bathrooms }} Bath</span>
                                 </div>
                             </div>
-                            <a href="#" class="btn">Détails</a>
+                            <a href="{{ route('details', $property->id) }}" class="btn">Détails</a>
                         </div>
                     </div>
                 </div>

@@ -15,7 +15,7 @@
         <form action="{{ route('search') }}" method="GET" class="actions-form">
             <div class="choices">
                 <label for="a" class="choice-label">Acheter</label>
-                <input type="radio" name="status" id="a" value="acheter">
+                <input type="radio" name="status" id="a" value="للبيع">
                 <label for="l" class="choice-label">Louer</label>
                 <input type="radio" name="status" id="l" value="louer">
                 <label for="v" class="choice-label">Vendre</label>
@@ -25,15 +25,15 @@
             <div class="search">
                 <div class="input-decorated">
                     <img src="{{ asset('assets/icons/location1.png') }}" alt="icon" class="icon" />
-                    {{-- <select name="type" id="property-select" style="width: 100%;">
+                    <select name="type" id="property-select" style="width: 100%;">
                         <option value="">Choisissez votre type</option>
                         @foreach ($properties as $property)
                         <option value="{{ $property->city }}">{{ $property->city }}</option>
                         @endforeach
-                    </select> --}}
-
-                    <input   type="text" name="city" id="city" placeholder="Ville" />
+                    </select>
+                    {{-- <input   type="text" name="city" id="city" placeholder="Ville" /> --}}
                 </div>
+
                 <div class="separator"></div>
                 <div class="input-decorated">
                     <img src="{{ asset('assets/icons/home-icon.png') }}" alt="icon" class="icon" />
