@@ -57,7 +57,7 @@ class PropertyController extends Controller
         $properties = Property::with('images')
                               ->where('status', 'للبيع')
 
-                              ->get();
+                              ->paginate(10);
         // إرجاع العرض مع العقارات
         return view('properties/acheter', compact('properties'));
     }
@@ -65,8 +65,8 @@ class PropertyController extends Controller
     {
         // جلب العقارات المعروضة للبيع فقط
         $properties = Property::with('images')
-                              ->where('status', 'louer')
-                              ->get();
+                              ->where('status', 'للإيجار')
+                              ->paginate(10);
 
         // إرجاع العرض مع العقارات
         return view('properties.index', compact('properties'));
@@ -74,9 +74,9 @@ class PropertyController extends Controller
      // Function to return the form view
      public function create()
      {
-        // if (!auth()->check()) {
-        //     return redirect('login');  // أو أي مسار تسجيل دخول لديك
-        // }
+        if (!auth()->check()) {
+            return redirect('login');  // أو أي مسار تسجيل دخول لديك
+        }
 
         return view('ajouter');
 

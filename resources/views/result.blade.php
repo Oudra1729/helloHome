@@ -67,14 +67,12 @@
     </style>
 </head>
 <body>
-
+    <h1>Résultats de la recherche</h1>
+@if($properties->isEmpty())
+    <p>Aucune propriété trouvée.</p>
+@else
 <section class="section-2">
     <div class="titles">
-        <h1>Trouvez votre maison de rêve dès maintenant</h1>
-        <h3>
-            Découvrez notre sélection exclusive de propriétés à vendre,
-            à acheter et à louer.
-        </h3>
     </div>
 
     <div class="carousel">
@@ -129,6 +127,7 @@
         {{-- {{ $properties->links() }} --}}
     </div>
 </section>
+@endif
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {

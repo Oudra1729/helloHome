@@ -64,10 +64,11 @@
             </div>
             <div class="property-info mt-4">
                 <p><strong>Type:</strong> {{ $property->type }}</p>
-                <p><strong>Price:</strong> {{ $property->price }}$</p>
+                <p><strong>Price:</strong> {{ $property->price }}DH</p>
                 <p><strong>Bedrooms:</strong> {{ $property->bedrooms }}</p>
                 <p><strong>Bathrooms:</strong> {{ $property->bathrooms }}</p>
                 <p><strong>Space:</strong> {{ $property->space }}m²</p>
+                <p><strong>description:</strong> {{ $property->description }}</p>
             </div>
             <a href="{{ url()->previous() }}" class="btn btn-primary btn-back">Back to Listings</a>
         </div>

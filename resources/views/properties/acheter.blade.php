@@ -65,11 +65,14 @@
 
 <section class="section-2">
     <div class="titles">
+        <h1>
+
+        </h1>
         <h1>Trouvez votre maison de rêve dès maintenant</h1>
-        <h3>
+        {{-- <h3>
             Découvrez notre sélection exclusive de propriétés à vendre,
             à acheter et à louer.
-        </h3>
+        </h3> --}}
     </div>
 
     <div class="carousel">
