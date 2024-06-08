@@ -15,7 +15,7 @@
     <!-- Champ pour le fichier image -->
     <div class="form-group">
         <label for="image_path">Image:</label>
-        <input type="file" class="form-control-file" id="image_path" name="image_path" required>
+        <input type="file" class="form-control-file" id="image_path" name="image_path[]" multiple required>
     </div>
 
 

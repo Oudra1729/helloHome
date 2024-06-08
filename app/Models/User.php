@@ -49,5 +49,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Property::class);
     }
+     // Define a method to check if the user is an admin
+     public function isAdmin()
+     {
+         return $this->is_admin;
+     }
 
 }

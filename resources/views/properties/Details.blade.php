@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ asset('css/details.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         body {
             background-color: #f8f9fa;
@@ -15,7 +16,6 @@
             background-color: #ffffff;
             border-radius: 10px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            /* padding: 20px; */
             margin-top: 20px;
         }
         .property-details h1 {
@@ -51,6 +51,22 @@
             margin-top: 30px;
             justify-content: center;
         }
+        .contact-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .contact-info i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        .contact-info a {
+            color: inherit;
+            text-decoration: none;
+        }
+        .contact-info a:hover {
+            color: #007bff;
+        }
     </style>
 </head>
 <body>
@@ -59,7 +75,7 @@
             <h1 class="text-center">{{ $property->status }} - {{ $property->city }}</h1>
             <div class="image-container">
                 @foreach ($images as $image)
-                    <img src="{{ asset('storage/images/' . $image->image_path) }}" alt="Image of {{ $property->city }}" class="animate__animated animate__zoomIn">
+                    <img src="{{ asset('storage/' . $image->image_path) }}" alt="Image of {{ $property->city }}" class="animate__animated animate__zoomIn">
                 @endforeach
             </div>
             <div class="property-info mt-4">
@@ -68,7 +84,29 @@
                 <p><strong>Bedrooms:</strong> {{ $property->bedrooms }}</p>
                 <p><strong>Bathrooms:</strong> {{ $property->bathrooms }}</p>
                 <p><strong>Space:</strong> {{ $property->space }}m²</p>
-                <p><strong>description:</strong> {{ $property->description }}</p>
+                <p><strong>Description:</strong> {{ $property->description }}</p>
+                <p><strong>For {{ $property->status }}:</strong> Contact us now for more information!</p>
+                <div class="contact-info">
+                    <i class="fas fa-building"></i>
+                    <p><strong>Agence Immobilière Supérieure</strong></p>
+                </div>
+                <div class="contact-info">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>Adresse: 123 Rue Principale, Ville, Pays</p>
+                </div>
+                <div class="contact-info">
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:+212 0 123 45 67">+212 0 123 45 67</a>
+                </div>
+                <div class="contact-info">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:brahimbra1236@gmal.com">brahimbra1236@gmal.com</a>
+                </div>
+                <div class="contact-info">
+                    <i class="fab fa-whatsapp"></i>
+                    <p> <a href="https://wa.me/+212695968053">+212 695-968053</a></p>
+                    {{-- <a href="https://wa.me/+212 695-968053">+212 695-968053</a> --}}
+                </div>
             </div>
             <a href="{{ url()->previous() }}" class="btn btn-primary btn-back">Back to Listings</a>
         </div>
