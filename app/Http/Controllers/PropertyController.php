@@ -63,13 +63,13 @@ class PropertyController extends Controller
     }
     public function louer()
     {
-        // جلب العقارات المعروضة للبيع فقط
+        // جلب العقارات المعروضة للإيجار فقط
         $properties = Property::with('images')
                               ->where('status', 'للإيجار')
                               ->paginate(10);
 
         // إرجاع العرض مع العقارات
-        return view('properties.index', compact('properties'));
+        return view('properties.louer', compact('properties'));
     }
      // Function to return the form view
      public function create()
@@ -89,43 +89,94 @@ class PropertyController extends Controller
          return view('properties.Details', compact('property', 'images'));
      }
 
-     public function store(Request $request)
-     {
-         $request->validate([
-             'title' => 'required|string|max:255',
-             'description' => 'required|string',
-             'price' => 'required|numeric',
-             'bedrooms' => 'required|integer',
-             'bathrooms' => 'required|integer',
-             'status' => 'required|string',
-             'type' => 'required|string',
-             'city' => 'required|string',
-             'space' => 'required|integer',
-             'user_id' => 'sometimes|integer',  // Make user_id optional and integer
-         ]);
+    //  public function store(Request $request)
+    //  {
+    //      $request->validate([
+    //          'title' => 'required|string|max:255',
+    //          'description' => 'required|string',
+    //          'price' => 'required|numeric',
+    //          'bedrooms' => 'required|integer',
+    //          'bathrooms' => 'required|integer',
+    //          'status' => 'required|string',
+    //          'type' => 'required|string',
+    //          'city' => 'required|string',
+    //          'space' => 'required|integer',
+    //          'user_id' => 'sometimes|integer',  // Make user_id optional and integer
+    //      ]);
 
-         // Create the property
-         $created_object = Property::create([
-             'title' => $request->title,
-             'description' => $request->description,
-             'price' => $request->price,
-             'bedrooms' => $request->bedrooms,
-             'bathrooms' => $request->bathrooms,
-             'status' => $request->status,
-             'type' => $request->type,
-             'city' => $request->city,
-             'space' => $request->space,
-             'user_id' => $request->user_id ?? 1,  // Default to 1 if user_id is not provided
-         ]);
+    //      // Create the property
+    //      $created_object = Property::create([
+    //          'title' => $request->title,
+    //          'description' => $request->description,
+    //          'price' => $request->price,
+    //          'bedrooms' => $request->bedrooms,
+    //          'bathrooms' => $request->bathrooms,
+    //          'status' => $request->status,
+    //          'type' => $request->type,
+    //          'city' => $request->city,
+    //          'space' => $request->space,
+    //          'user_id' => $request->user_id ?? 1,  // Default to 1 if user_id is not provided
+    //      ]);
 
-         if ($created_object) {
-             // Fetch paginated properties to pass to the view
-             $properties = Property::paginate(6);
-             return view('acceuil', compact('properties'));
-         } else {
-             return redirect()->route('properties.create')->withErrors(['error' => 'An error occurred while adding the property. Please try again.']);
-         }
-     }
+    //     //  if ($created_object) {
+    //     //      // Fetch paginated properties to pass to the view
+    //     //      $properties = Property::paginate(6);
+    //     //      return view('acceuil', compact('properties'));
+    //     //  } else {
+    //     //      return redirect()->route('properties.create')->withErrors(['error' => 'An error occurred while adding the property. Please try again.']);
+    //     //  }
+    //     if ($created_object) {
+    //         // Fetch paginated properties to pass to the view
+    //         $properties = Property::all();
+    //         return redirect()->route('insert.images')->with(compact('properties'));
+    //     } else {
+    //         return redirect()->route('properties.create')->withErrors(['error' => 'An error occurred while adding the property. Please try again.']);
+    //     }
+
+    //  }
+
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'price' => 'required|numeric',
+            'bedrooms' => 'required|integer',
+            'bathrooms' => 'required|integer',
+            'status' => 'required|string',
+            'type' => 'required|string',
+            'city' => 'required|string',
+            'space' => 'required|integer',
+            'user_id' => 'sometimes|integer',  // Make user_id optional and integer
+        ]);
+
+        // Create the property
+        $created_property = Property::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'price' => $request->price,
+            'bedrooms' => $request->bedrooms,
+            'bathrooms' => $request->bathrooms,
+            'status' => $request->status,
+            'type' => $request->type,
+            'city' => $request->city,
+            'space' => $request->space,
+            'user_id' => $request->user_id ?? auth()->id(),  // Default to authenticated user's ID
+        ]);
+
+        if ($created_property) {
+            // Fetch the created property from the database
+            $properties = Property::find($created_property->id);
+            // dd($property);
+
+            return view('insert_images', compact('properties'));
+        } else {
+            // If property creation fails, redirect back to the property creation form with an error message
+            return redirect()->route('insertImages')->withErrors(['error' => 'An error occurred while adding the property. Please try again.']);
+        }
+    }
+
 
 
 }

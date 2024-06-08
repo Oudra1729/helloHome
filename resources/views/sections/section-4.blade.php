@@ -16,7 +16,9 @@
         <div class="actions">
             <div>
                 <a href="#" class="btn link comm">Commencer</a>
+                @if (!Auth()->user())
                 <a href="#" class="btn link insc">S'inscrire</a>
+                @endif
             </div>
         </div>
     </div>

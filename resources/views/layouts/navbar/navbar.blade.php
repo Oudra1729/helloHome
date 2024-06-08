@@ -6,10 +6,10 @@
     <nav>
         <ul>
             <li><a href="{{ route('properties.achats') }}" class="link">Acheter</a></li>
-            <li><a href="" class="link">Louer</a></li>
+            <li><a href="{{ route('properties.louer') }}" class="link">Louer</a></li>
             <li id="inscription-btn">
                 @if (Auth()->user())
-                <li><a href="#" class="link">Vendre</a></li>
+                <li><a href="{{ route('properties.vender') }}" class="link">Vendre</a></li>
                 <li><a href="#" class="link">Services</a></li>
 
                     <h4>{{ Auth()->user()->name }}</h4>

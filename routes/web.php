@@ -26,7 +26,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/properties', [PropertyController::class, 'store'])->name('properties.store');
 
     // Image upload routes
-    Route::post('/image/create', [ImageController::class, 'store'])->name('image.store');
+    // Route::post('/image/create', [ImageController::class, 'store'])->name('image.store');
     Route::post('/images/store', [ImageController::class, 'store'])->name('images.store');
 });
 
@@ -43,3 +43,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/properties/achater', [PropertyController::class, 'vender'])->name('properties.achats');
 
+// Route::resource('properties', PropertyController::class);
+
+Route::post('properties/create', [PropertyController::class, 'store'])->name('properties.vender');
+
+Route::get('/insertImages',[ImageController::class ,'create'])->name('insertImages');
+
+
+// Route::get('/get-cities', [PropertyController::class, 'getCities'])->name('get-cities');

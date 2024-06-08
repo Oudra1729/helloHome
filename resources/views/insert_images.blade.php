@@ -2,30 +2,26 @@
 @section('content')
 
 <h1>image form</h1>
-{{--  
-<form action="{{ route('image.store') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('images.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
-    <div class="">
-        <input type="hidden" name="property_id" value="{{ $id }}">
-        <input type="hidden" name="property_id" value="{{ $property_id }}">
-        <label for="image">Image:</label>
-        {{-- value={{ old('image') }} 
-        <input class="form-control" type="file" name="image_path" id="image_path" >
-        <!-- Le message d'erreur pour "picture" -->
-        @error('image')
-            <div class="alert alert-danger">
-                {{ $message }}
-            </div>
-        @enderror
+
+
+        <!-- Input field for property ID -->
+    <input type="hidden" name="property_id" value="{{ $properties->id }}">
+
+    <!-- Affichage de l'identifiant de la propriété pour vérification -->
+    {{ $properties->id }}
+
+    <!-- Champ pour le fichier image -->
+    <div class="form-group">
+        <label for="image_path">Image:</label>
+        <input type="file" class="form-control-file" id="image_path" name="image_path" required>
     </div>
-    <button type="submit">Ajouter</button>
+
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
 </form>
---}}
-<form method="POST" action="{{ route('images.store') }}" enctype="multipart/form-data">
-    @csrf
-    <input type="file" name="image_path" required>
-    <input type="hidden" name="property_id" value="{{ $property_id }}">
-    <button type="submit">Upload Image</button>
-</form>
+
 
 @endsection
