@@ -56,7 +56,6 @@
         }
     </style>
 </head>
-<body>
 
 <section class="section-3">
     <div class="titles">
@@ -110,7 +109,6 @@
         </div>
     </div>
 </section>
-
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const carouselInner = document.querySelector('.carousel-inner');
@@ -120,27 +118,27 @@
         let currentIndex = 0;
 
         function showNextSlide() {
-            currentIndex = (currentIndex + itemsPerSlide) % itemCount;
+            currentIndex++;
             const offset = -currentIndex * (100 / itemsPerSlide);
             carouselInner.style.transform = `translateX(${offset}%)`;
 
-            if (currentIndex === 0) {
-                // Move the first set of items to the end of the list for a continuous effect
-                for (let i = 0; i < itemsPerSlide; i++) {
-                    carouselInner.appendChild(carouselInner.firstElementChild);
-                }
-                // Reset the transform to show the seamless transition
-                carouselInner.style.transition = 'none';
-                carouselInner.style.transform = 'translateX(0)';
+            if (currentIndex >= itemCount / itemsPerSlide) {
+                // Reset to the first item for a seamless effect
                 setTimeout(() => {
+                    carouselInner.style.transition = 'none';
+                    carouselInner.style.transform = 'translateX(0)';
+                    currentIndex = 0;
+                    // Force reflow to reset transition
+                    carouselInner.offsetHeight;
                     carouselInner.style.transition = 'transform 1s ease';
-                });
+                }, 1000); // 1000ms corresponds to the transition duration
             }
         }
 
         setInterval(showNextSlide, 4000); // Change slide every 4 seconds
     });
 </script>
+
 
 </body>
 </html>

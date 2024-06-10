@@ -43,7 +43,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/properties/achater', [PropertyController::class, 'vender'])->name('properties.achats');
 
-// Route::resource('properties', PropertyController::class);
+
+Route::get('/properties/{property}/edit', [PropertyController::class, 'edit'])->name('properties.edit');
+Route::put('/properties/{property}', [PropertyController::class, 'update'])->name('properties.update');
+Route::delete('/properties/{property}', [PropertyController::class, 'destroy'])->name('properties.destroy');
 
 Route::post('properties/create', [PropertyController::class, 'store'])->name('properties.vender');
 

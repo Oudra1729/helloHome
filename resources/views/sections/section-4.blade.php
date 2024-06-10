@@ -15,11 +15,19 @@
         </div>
         <div class="actions">
             <div>
-                <a href="#" class="btn link comm">Commencer</a>
-                @if (!Auth()->user())
-                <a href="#" class="btn link insc">S'inscrire</a>
+                <a href="
+                @if (!auth()->user())
+                    {{ route('login') }}
+                @else
+                    {{ route('properties.vender') }}
+                @endif
+                " class="btn link comm">Commencer</a>
+
+                @if (!auth()->user())
+                    <a href="{{ route('register') }}" class="btn link insc">S'inscrire</a>
                 @endif
             </div>
         </div>
+
     </div>
 </section>

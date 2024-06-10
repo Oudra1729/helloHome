@@ -33,10 +33,10 @@
     margin-bottom: 15%;
     background-color: rgb(110, 3, 3);
     border-radius: 8px;
-    width: 7%;
+    width: 10%;
     height: 40px;
     align-items: center;
-    padding: 0 16px;
+    padding: 0 22px;
     cursor: pointer;
     color: white;
     font-size: 16px;
@@ -46,7 +46,7 @@
 
 /* Style for the clicked state */
 .section-1 .actions .choices label.clicked {
-    background-color: rgb(255, 0, 0); /* Change to your desired color */
+    background-color: rgb(0, 0, 0); /* Change to your desired color */
 }
 
 .section-1 .actions .choices input {

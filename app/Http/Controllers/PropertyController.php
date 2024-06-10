@@ -89,53 +89,6 @@ class PropertyController extends Controller
          return view('properties.Details', compact('property', 'images'));
      }
 
-    //  public function store(Request $request)
-    //  {
-    //      $request->validate([
-    //          'title' => 'required|string|max:255',
-    //          'description' => 'required|string',
-    //          'price' => 'required|numeric',
-    //          'bedrooms' => 'required|integer',
-    //          'bathrooms' => 'required|integer',
-    //          'status' => 'required|string',
-    //          'type' => 'required|string',
-    //          'city' => 'required|string',
-    //          'space' => 'required|integer',
-    //          'user_id' => 'sometimes|integer',  // Make user_id optional and integer
-    //      ]);
-
-    //      // Create the property
-    //      $created_object = Property::create([
-    //          'title' => $request->title,
-    //          'description' => $request->description,
-    //          'price' => $request->price,
-    //          'bedrooms' => $request->bedrooms,
-    //          'bathrooms' => $request->bathrooms,
-    //          'status' => $request->status,
-    //          'type' => $request->type,
-    //          'city' => $request->city,
-    //          'space' => $request->space,
-    //          'user_id' => $request->user_id ?? 1,  // Default to 1 if user_id is not provided
-    //      ]);
-
-    //     //  if ($created_object) {
-    //     //      // Fetch paginated properties to pass to the view
-    //     //      $properties = Property::paginate(6);
-    //     //      return view('acceuil', compact('properties'));
-    //     //  } else {
-    //     //      return redirect()->route('properties.create')->withErrors(['error' => 'An error occurred while adding the property. Please try again.']);
-    //     //  }
-    //     if ($created_object) {
-    //         // Fetch paginated properties to pass to the view
-    //         $properties = Property::all();
-    //         return redirect()->route('insert.images')->with(compact('properties'));
-    //     } else {
-    //         return redirect()->route('properties.create')->withErrors(['error' => 'An error occurred while adding the property. Please try again.']);
-    //     }
-
-    //  }
-
-
     public function store(Request $request)
     {
         $request->validate([
@@ -176,6 +129,73 @@ class PropertyController extends Controller
             return redirect()->route('insertImages')->withErrors(['error' => 'An error occurred while adding the property. Please try again.']);
         }
     }
+
+
+
+    public function edit($id)
+{
+    $property = Property::findOrFail($id);
+    return view('properties.edit', compact('property'));
+}
+
+
+
+public function update(Request $request, $id)
+{
+    $request->validate([
+        'title' => 'required|string|max:255',
+        'description' => 'required|string',
+        'price' => 'required|numeric',
+        'bedrooms' => 'required|integer',
+        'bathrooms' => 'required|integer',
+        'status' => 'required|string',
+        'type' => 'required|string',
+        'city' => 'required|string',
+        'space' => 'required|integer',
+    ]);
+
+    // Find the property by its ID
+    $property = Property::findOrFail($id);
+
+    // Update the property with new data
+    $property->update([
+        'title' => $request->title,
+        'description' => $request->description,
+        'price' => $request->price,
+        'bedrooms' => $request->bedrooms,
+        'bathrooms' => $request->bathrooms,
+        'status' => $request->status,
+        'type' => $request->type,
+        'city' => $request->city,
+        'space' => $request->space,
+    ]);
+
+    // Redirect back with a success message
+    return redirect()->route('properties.index', $property->id)->with('success', 'Property updated successfully.');
+}
+
+
+    public function destroy($id)
+    {
+        // Find the property by its ID
+        $property = Property::findOrFail($id);
+
+        // Delete the related images
+        foreach ($property->images as $image) {
+            // Delete the image file from storage (if necessary)
+            // Storage::delete('path/to/image/'.$image->image_path);
+
+            // Delete the image record from the database
+            $image->delete();
+        }
+
+        // Delete the property
+        $property->delete();
+
+        // Redirect back with a success message
+        return redirect()->route('properties.index')->with('success', 'Property deleted successfully.');
+    }
+
 
 
 
