@@ -28,33 +28,32 @@ class ImageController extends Controller
     }
 
 
-
     public function store(Request $request)
     {
         // Validate the request
         $request->validate([
-            'image_path' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust validation rules as needed
+            'image_path.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust validation rules as needed
             'property_id' => 'required|exists:properties,id', // Ensure property_id exists in the properties table
         ]);
 
-        // Check if the request contains an uploaded image file
-        if ($request->hasFile('image_path')) {
-            // Store the uploaded image file in the specified directory with a unique name
-            $filePath = $request->file('image_path')->store('images', 'public');
+        // Check if the request contains uploaded image files
+        if ($request->hasfile('image_path')) {
+            foreach ($request->file('image_path') as $image) {
+                $name = time() . '_' . $image->getClientOriginalName();
+                $filePath = $image->storeAs('images', $name, 'public');
 
-            // Create a new image instance using the create() method
-            $image = Image::create([
-                'image_path' => $filePath,
-                'property_id' => $request->property_id,
-            ]);
-            // dd($image);
+                // Create a new image instance using the create() method
+                Image::create([
+                    'image_path' => $filePath,
+                    'property_id' => $request->property_id,
+                ]);
+            }
 
             // Redirect to a success page or view
-            return redirect()->route('properties.index')->with('success', 'Image uploaded successfully');
+            return redirect()->route('properties.index')->with('success', 'Images uploaded successfully');
         } else {
             // Handle case where no image file is uploaded in the request
-            return redirect()->back()->with('error', 'No image uploaded');
+            return redirect()->back()->with('error', 'No images uploaded');
         }
     }
-
 }

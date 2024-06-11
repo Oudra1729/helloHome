@@ -77,6 +77,8 @@
             animation: tada 1s; /* Add the animation */
         }
     </style>
+   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <div class="container">
@@ -90,6 +92,10 @@
             <div class="property-info mt-4">
                 <table class="table table-striped">
                     <tbody>
+                        <tr>
+                            <th>Title:</th>
+                            <td>{{ $property->title}}</td>
+                        </tr>
                         <tr>
                             <th>Type:</th>
                             <td>{{ $property->type }}</td>
@@ -169,13 +175,17 @@
                         </form>
                     @endif
                     </div>
-                    <div id="map"></div> <!-- Map container -->
+                    <div id="map">
+                        <div className='maps'><iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Errachidia+(My%20Business%20Name)&amp;t=h&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.gps.ie/">gps tracker sport</a></iframe></div>
+                        </div> <!-- Map container -->
                     <a href="{{ url()->previous() }}" class="btn btn-primary btn-back">Back to Listings</a>
                 </div>
                 <nav class="pagination justify-content-center mt-4">
                     {{ $images->links() }}
                 </nav>
+
             </div>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -189,26 +199,28 @@
             });
 
             // Initialize Google Maps
-            function initMap() {
-                // The location of the property (Replace with actual coordinates)
-                const propertyLocation = { lat: 31.9314, lng: -4.4238 };
+            // function initMap() {
+            //     // The location of the property (Replace with actual coordinates)
+            //     const propertyLocation = { lat: 31.9314, lng: -4.4238 };
 
-                // The map, centered at the property location
-                const map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 15,
-                    center: propertyLocation
-                });
+            //     // The map, centered at the property location
+            //     const map = new google.maps.Map(document.getElementById('map'), {
+            //         zoom: 15,
+            //         center: propertyLocation
+            //     });
 
-                // The marker, positioned at the property location
-                const marker = new google.maps.Marker({
-                    position: propertyLocation,
-                    map: map
-                });
-            }
+            //     // The marker, positioned at the property location
+            //     const marker = new google.maps.Marker({
+            //         position: propertyLocation,
+            //         map: map
+            //     });
+            // }
 
-            // Load the map
-            initMap();
+            // // Load the map
+            // initMap();
+
         });
     </script>
+
 </body>
 </html>

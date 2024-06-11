@@ -17,6 +17,7 @@
 <body>
     <div class="container">
         @include('layouts.navbar.navbar')
+
         <main>
             @yield('content')
         </main>
@@ -24,5 +25,6 @@
     </div>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+
 </body>
 </html>
