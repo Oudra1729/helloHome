@@ -18,8 +18,8 @@
                 <input type="radio" name="status" id="a" value="للبيع">
                 <label for="l" class="choice-label">Louer</label>
                 <input type="radio" name="status" id="l" value="louer">
-                <label for="v" class="choice-label">Vendre</label>
-                <input type="radio" name="status" id="v" value="vendre">
+                {{-- <label for="v" class="choice-label">Vendre</label>
+                <input type="radio" name="status" id="v" value="vendre"> --}}
             </div>
 
             <div class="search">

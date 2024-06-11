@@ -1,22 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- <div class="container">
-    @foreach ($properties as $property)
-    <div class="property">
-        @foreach ($property->images as $image)
-        <img src="{{ asset('storage/images/' . $image->image_path) }}" alt="Image of {{ $property->city }}">
-    @endforeach
-            <h2>{{ $property->title }}</h2>
-            <p>{{ $property->description }}</p>
-            <p>Price: {{ $property->price }}</p>
-            <p>Bedrooms: {{ $property->bedrooms }}</p>
-            <p>Bathrooms: {{ $property->bathrooms }}</p>
-            @foreach ($property->images as $image)
-            @endforeach
-        </div>
-    @endforeach
-</div> --}}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +10,7 @@
     {{-- Uncomment the following line if you're using Bootstrap --}}
     {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"> --}}
 
-    <link rel="stylesheet" href="{{ asset('css/tilwind.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/tailwind.css') }}">
 
     <style>
         .carousel .item-img {
@@ -65,9 +49,7 @@
 
 <section class="section-2">
     <div class="titles">
-        <h1>
-
-        </h1>
+        <h1></h1>
         <h1>Trouvez votre maison de rêve dès maintenant</h1>
         {{-- <h3>
             Découvrez notre sélection exclusive de propriétés à vendre,
@@ -81,18 +63,18 @@
                 <div class="item-img image-container">
                     <label><h2>{{ $property->status }}</h2></label>
                     @foreach ($property->images as $image)
-                        <img src="{{ asset('storage/images/' . $image->image_path) }}" alt="Image of {{ $property->city }}">
+                        <img src="{{ asset('storage/' . $image->image_path) }}" alt="Image of {{ $property->city }}">
                     @endforeach
                 </div>
                 <div class="item-body">
                     <div class="info-1">
                         <div class="">
                             <div class="iconed info-set">
-                                <img src="{{ asset('assets/icons/location1.png') }}" alt="" />
+                                <img src="{{ asset('assets/icons/location1.png') }}" alt="Location icon" />
                                 <p>{{ $property->city }}</p>
                             </div>
                             <div class="iconed info-set">
-                                <img src="{{ asset('assets/icons/home-icon.png') }}" alt="" />
+                                <img src="{{ asset('assets/icons/home-icon.png') }}" alt="Home icon" />
                                 <span>{{ $property->type }}</span>
                             </div>
                         </div>
@@ -103,15 +85,15 @@
                     <div class="info-2">
                         <div class="info-set">
                             <div class="iconed">
-                                <img src="{{ asset('assets/icons/bed2.png') }}" alt="" />
+                                <img src="{{ asset('assets/icons/bed2.png') }}" alt="Bed icon" />
                                 <span>{{ $property->bedrooms }}</span>
                             </div>
                             <div class="iconed">
-                                <img src="{{ asset('assets/icons/shower.png') }}" alt="" class="custom-icon" />
+                                <img src="{{ asset('assets/icons/shower.png') }}" alt="Shower icon" class="custom-icon" />
                                 <span>{{ $property->bathrooms }}</span>
                             </div>
                             <div class="iconed">
-                                <img src="{{ asset('assets/icons/ruler.png') }}" alt="" class="custom-icon" />
+                                <img src="{{ asset('assets/icons/ruler.png') }}" alt="Ruler icon" class="custom-icon" />
                                 <span>{{ $property->space }}m²</span>
                             </div>
                         </div>
@@ -166,8 +148,6 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
-
 </body>
 </html>
-
 @endsection

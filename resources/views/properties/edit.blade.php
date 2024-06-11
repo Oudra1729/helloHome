@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1>Edit Property</h1>
+    <h1 class="page-title">Edit Property</h1>
     <form method="POST" action="{{ route('properties.update', $property->id) }}">
         @csrf
         @method('PUT')
@@ -79,7 +79,66 @@
             @enderror
         </div>
 
-        <button type="submit" class="btn btn-primary">Update Property</button>
+        <button type="submit" class="btn-primary">Update Property</button>
     </form>
 </div>
+
+<style>
+    .container {
+        max-width: 100%;
+        margin: 0 auto;
+    
+    }
+
+    .page-title {
+        font-size: 2em;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        transition: border-color 0.3s;
+    }
+
+    .form-control:focus {
+        border-color: #80bdff;
+        outline: none;
+    }
+
+    .invalid-feedback {
+        color: #e3342f;
+        font-size: 0.875em;
+    }
+
+    .btn-primary {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 1em;
+        color: #fff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-align: center;
+        transition: background-color 0.3s;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+</style>
 @endsection

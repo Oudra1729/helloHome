@@ -120,45 +120,62 @@
                         </tr>
                     </tbody>
                 </table>
-                @if(Auth::check() && Auth::user()->name !== 'hello home')
-                <div class="contact-info">
-                    <i class="fas fa-building"></i>
-                    <p><strong>Agence Immobilière Supérieure</strong></p>
-                </div>
-                <div class="contact-info">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <p>Adresse: 123 HAY AIN ALATI 1, ERRACHIDIA, DRAA-TAFILALATE</p>
-                </div>
-                <div class="contact-info">
-                    <i class="fas fa-phone"></i>
-                    <a href="tel:+212 0 123 45 67">+212 9 596 80 53</a>
-                </div>
-                <div class="contact-info">
-                    <i class="fas fa-envelope"></i>
-                    <a href="mailto:brahimbra1236@gmal.com">brahimbra1236@gmal.com</a>
-                </div>
-                <div class="contact-info">
-                    <i class="fab fa-whatsapp"></i>
-                    <a href="https://wa.me/+212695968053" class="whatsapp-link">+212 695-968053</a>
-                </div>
-            @endif
+       <!-- Blade template -->
 
-                @if(Auth::user() && Auth::user()->name === 'hello home')
-                <a href="{{ route('properties.edit', $property->id) }}" class="btn btn-warning mt-4">Edit Property</a>
-                <form method="POST" action="{{ route('properties.destroy', $property->id) }}" onsubmit="return confirm('Are you sure you want to delete this property?');" style="display:inline;">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger mt-4">Delete Property</button>
-                </form>
-            @endif
+<div class="contact-info">
+    <i class="fas fa-building"></i>
+    <p><strong>Agence Immobilière Supérieure</strong></p>
+</div>
+<div class="contact-info">
+    <i class="fas fa-map-marker-alt"></i>
+    <p>Adresse: 123 HAY AIN ALATI 1, ERRACHIDIA, DRAA-TAFILALATE</p>
+</div>
+<div class="contact-info">
+    <i class="fas fa-phone"></i>
+    <a href="tel:+212 0 123 45 67">+212 9 596 80 53</a>
+</div>
+<div class="contact-info">
+    <i class="fas fa-envelope"></i>
+    <a href="mailto:brahimbra1236@gmal.com" class="auth-required">brahimbra1236@gmal.com</a>
+</div>
+<div class="contact-info">
+    <i class="fab fa-whatsapp"></i>
+    <a href="https://wa.me/+212695968053" class="auth-required whatsapp-link">+212 695-968053</a>
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const authRequiredLinks = document.querySelectorAll('.auth-required');
+
+        authRequiredLinks.forEach(link => {
+            link.addEventListener('click', function(event) {
+                @if(!Auth::check())
+                    event.preventDefault();
+                    window.location.href = "{{ route('login') }}"; // Redirect to login page
+                @endif
+            });
+        });
+    });
+</script>
+
+
+                        @if(Auth::user() && Auth::user()->name === 'hello home')
+                        <a href="{{ route('properties.edit', $property->id) }}" class="btn btn-warning mt-4">Edit Property</a>
+                        <form method="POST" action="{{ route('properties.destroy', $property->id) }}" onsubmit="return confirm('Are you sure you want to delete this property?');" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger mt-4">Delete Property</button>
+                        </form>
+                    @endif
+                    </div>
+                    <div id="map"></div> <!-- Map container -->
+                    <a href="{{ url()->previous() }}" class="btn btn-primary btn-back">Back to Listings</a>
+                </div>
+                <nav class="pagination justify-content-center mt-4">
+                    {{ $images->links() }}
+                </nav>
             </div>
-            <div id="map"></div> <!-- Map container -->
-            <a href="{{ url()->previous() }}" class="btn btn-primary btn-back">Back to Listings</a>
-        </div>
-        <nav class="pagination justify-content-center mt-4">
-            {{ $images->links() }}
-        </nav>
-    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {

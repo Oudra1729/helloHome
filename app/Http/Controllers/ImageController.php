@@ -27,42 +27,6 @@ class ImageController extends Controller
 
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    // public function store(Request $request)
-
-    // {
-    //     dd($request);
-    //     // Validate the request
-    //     $request->validate([
-    //         'image_path' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-    //         'property_id' => 'required|exists:properties,id'
-    //     ]);
-
-    //     // Check if the request contains an uploaded image file
-    //     if ($request->file('image_path')) {
-    //         $file = $request->file('image_path');
-    //         $newFileName = time() . '-' . $file->getClientOriginalName();
-
-    //         // Store the uploaded image file in the specified directory
-    //         $file->storeAs('my-uploaded-images', $newFileName, 'public');
-
-    //         // Create a new image instance
-    //         $image = new Image();
-    //         $image->image_path = $newFileName;
-    //         $image->property_id = $request->property_id;
-    //     dd($image);
-    //         // Save the image instance to the database
-    //         $image->save();
-
-    //         // Optionally, you can return a success response or redirect
-    //         return response()->json(['message' => 'Image uploaded successfully'], 200);
-    //     } else {
-    //         // Handle case where no image file is uploaded in the request
-    //         return response()->json(['error' => 'No image uploaded'], 400);
-    //     }
-    // }
 
 
     public function store(Request $request)
