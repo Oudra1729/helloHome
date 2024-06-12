@@ -94,7 +94,7 @@
 }
 
 .section-3 .btn:hover {
-    background-color: darken(var(--primary-color), 10%);
+    background-color:#000000;
 }
 
 .section-3 .navs {

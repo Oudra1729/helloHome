@@ -17,7 +17,7 @@
         <div class="form-group">
             <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
 
-            <label for="title">Titre :</label>
+            <label for="title">Address :</label>
             <input type="text" class="form-control" id="title" name="title" required>
         </div>
         <div class="form-group">

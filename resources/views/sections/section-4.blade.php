@@ -19,14 +19,15 @@
                 @if (!auth()->user())
                     {{ route('login') }}
                 @else
-                    {{ route('properties.vender') }}
+                    https://wa.me/+212695968053
                 @endif
-                " class="btn link comm">Commencer</a>
+                " class="btn link comm auth-required whatsapp-link">Commencer</a>
 
                 @if (!auth()->user())
                     <a href="{{ route('register') }}" class="btn link insc">S'inscrire</a>
                 @endif
             </div>
+
         </div>
 
     </div>

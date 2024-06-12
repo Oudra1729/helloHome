@@ -7,6 +7,7 @@ use App\Models\Property;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class PropertyController extends Controller
 {
@@ -181,13 +182,26 @@ public function update(Request $request, $id)
         $property = Property::findOrFail($id);
 
         // Delete the related images
+        $property = Property::findOrFail($id);
+
+        // Delete the related images
         foreach ($property->images as $image) {
             // Delete the image file from storage (if necessary)
-            // Storage::delete('path/to/image/'.$image->image_path);
+            if(Storage::disk('public')->exists( $image->image_path)){
+                Storage::disk('public')->delete( $image->image_path);
+                $image->delete();
+            }
 
             // Delete the image record from the database
-            $image->delete();
         }
+        $property->delete();
+        // foreach ($property->images as $image) {
+        //     // Delete the image file from storage (if necessary)
+        //     // Storage::delete('path/to/image/'.$image->image_path);
+
+        //     // Delete the image record from the database
+        //     $image->delete();
+        // }
 
         // Delete the property
         $property->delete();

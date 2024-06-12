@@ -18,7 +18,9 @@
         .carousel-inner {
             display: flex;
             transition: transform 0.5s ease;
+
         }
+
         .carousel .item {
             flex: 0 0 33.33%; /* Display 3 items at a time */
             box-sizing: border-box;
@@ -30,6 +32,13 @@
             width: 100%;
             height: 200px;
         }
+        #detail{
+            color: black;
+            z-index: 9999;
+        }
+        #detail:hover{
+            color: black;
+        }
         .pagination {
             display: flex;
             justify-content: space-between;
@@ -39,6 +48,7 @@
         .pagination a {
             width: 40px !important;
         }
+
         .image-container {
             position: relative;
         }
@@ -101,7 +111,7 @@
                                     <span>{{ $property->bathrooms }} Bath</span>
                                 </div>
                             </div>
-                            <a href="{{ route('details', $property->id) }}" class="btn">Détails</a>
+                            <a href="{{ route('details', $property->id) }}" class="btn" id="detail" >Détails</a>
                         </div>
                     </div>
                 </div>
