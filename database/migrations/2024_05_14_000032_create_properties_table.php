@@ -19,8 +19,8 @@ return new class extends Migration
             $table->decimal('price', 20, 2);
             $table->integer('bedrooms');
             $table->integer('bathrooms');
-            $table->string('status'); // للبيع، للإيجار
-            $table->string('type'); // فيلا, منزل, إلخ
+            $table->string('status'); 
+            $table->string('type');
             $table->string('city');
             $table->string('space');
             $table->timestamps();

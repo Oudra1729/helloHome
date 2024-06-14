@@ -56,8 +56,7 @@ class PropertyController extends Controller
     {
         // جلب العقارات المعروضة للبيع فقط
         $properties = Property::with('images')
-                              ->where('status', 'للبيع')
-
+                              ->where('status', ' À vendre')
                               ->paginate(10);
         // إرجاع العرض مع العقارات
         return view('properties/acheter', compact('properties'));
@@ -66,7 +65,7 @@ class PropertyController extends Controller
     {
         // جلب العقارات المعروضة للإيجار فقط
         $properties = Property::with('images')
-                              ->where('status', 'للإيجار')
+                              ->where('status', 'À louer')
                               ->paginate(10);
 
         // إرجاع العرض مع العقارات
@@ -76,7 +75,7 @@ class PropertyController extends Controller
      public function create()
      {
         if (!auth()->check()) {
-            return redirect('login');  // أو أي مسار تسجيل دخول لديك
+            return redirect('login');
         }
 
         return view('ajouter');
@@ -192,18 +191,8 @@ public function update(Request $request, $id)
                 $image->delete();
             }
 
-            // Delete the image record from the database
         }
-        $property->delete();
-        // foreach ($property->images as $image) {
-        //     // Delete the image file from storage (if necessary)
-        //     // Storage::delete('path/to/image/'.$image->image_path);
 
-        //     // Delete the image record from the database
-        //     $image->delete();
-        // }
-
-        // Delete the property
         $property->delete();
 
         // Redirect back with a success message
