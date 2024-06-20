@@ -7,7 +7,7 @@
     @include('sections.section-4')
     @include('sections.section-5')
 
-    <script>
+    {{-- <script>
         // Example implementation of isUserRegistered function
     function isUserRegistered() {
         // You need to implement your logic here to check if the user is registered
@@ -29,6 +29,6 @@
         }, 30000); // 30 seconds
     });
 
-        </script>
+        </script> --}}
 @endsection
 

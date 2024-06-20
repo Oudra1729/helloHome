@@ -56,7 +56,7 @@ class PropertyController extends Controller
     {
         // جلب العقارات المعروضة للبيع فقط
         $properties = Property::with('images')
-                              ->where('status', ' À vendre')
+                              ->where('status', 'À vendre')
                               ->paginate(10);
         // إرجاع العرض مع العقارات
         return view('properties/acheter', compact('properties'));

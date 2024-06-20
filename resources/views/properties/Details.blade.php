@@ -148,6 +148,13 @@
     <i class="fab fa-whatsapp"></i>
     <a href="https://wa.me/+212695968053" class="auth-required whatsapp-link">+212 695-968053</a>
 </div>
+@if(Auth::check() && $property->status === 'À louer')
+    <div class="contact-info">
+        <i class="fas fa-envelope"></i>
+        <a href="https://www.scribd.com/document/423139261/%D8%B9%D9%82%D8%AF-%D9%83%D8%B1%D8%A7%D8%A1" class="auth-required">Contrat de bail</a>
+    </div>
+@endif
+
 
 
 <script>

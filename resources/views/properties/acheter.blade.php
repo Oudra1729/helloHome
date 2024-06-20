@@ -106,7 +106,7 @@
 
     <div class="pagination">
         {{-- Pagination links --}}
-        {{-- {{ $properties->links() }} --}}
+        {{ $properties->links() }}
     </div>
 </section>
 

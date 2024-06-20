@@ -127,27 +127,31 @@
         const itemsPerSlide = 3;
         let currentIndex = 0;
 
-        function showNextSlide() {
-            currentIndex++;
-            const offset = -currentIndex * (100 / itemsPerSlide);
-            carouselInner.style.transform = `translateX(${offset}%)`;
+        // Check if animation is needed
+        if (itemCount > itemsPerSlide) {
+            function showNextSlide() {
+                currentIndex++;
+                const offset = -currentIndex * (100 / itemsPerSlide);
+                carouselInner.style.transform = `translateX(${offset}%)`;
 
-            if (currentIndex >= itemCount / itemsPerSlide) {
-                // Reset to the first item for a seamless effect
-                setTimeout(() => {
-                    carouselInner.style.transition = 'none';
-                    carouselInner.style.transform = 'translateX(0)';
-                    currentIndex = 0;
-                    // Force reflow to reset transition
-                    carouselInner.offsetHeight;
-                    carouselInner.style.transition = 'transform 1s ease';
-                }, 1000); // 1000ms corresponds to the transition duration
+                if (currentIndex >= itemCount / itemsPerSlide) {
+                    // Reset to the first item for a seamless effect
+                    setTimeout(() => {
+                        carouselInner.style.transition = 'none';
+                        carouselInner.style.transform = 'translateX(0)';
+                        currentIndex = 0;
+                        // Force reflow to reset transition
+                        carouselInner.offsetHeight;
+                        carouselInner.style.transition = 'transform 1s ease';
+                    }, 1000); // 1000ms corresponds to the transition duration
+                }
             }
-        }
 
-        setInterval(showNextSlide, 4000); // Change slide every 4 seconds
+            setInterval(showNextSlide, 4000); // Change slide every 4 seconds
+        }
     });
 </script>
+
 
 
 </body>

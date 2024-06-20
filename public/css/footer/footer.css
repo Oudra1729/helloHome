@@ -24,10 +24,12 @@
  .footer .navs div nav ul li {
     margin-bottom: 16px;
     font-size: 14px;
+    color: var(--text-color-white);
  }
 
  .footer * {
     color: var(--text-color-lighter);
+
  }
 
  .footer .link-images {
