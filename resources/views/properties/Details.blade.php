@@ -172,15 +172,24 @@
     });
 </script>
 
+@if(Auth::user() && Auth::user()->name === 'hello home')
+    <a href="{{ route('properties.edit', $property->id) }}" class="btn btn-warning mt-4">Edit Property</a>
+    <form id="delete-form-{{ $property->id }}" method="POST" action="{{ route('properties.destroy', $property->id) }}" style="display:inline;">
+        @csrf
+        @method('DELETE')
+        <button type="button" class="btn btn-danger mt-4" onclick="confirmDelete({{ $property->id }})">Delete Property</button>
+    </form>
+@endif
 
-                        @if(Auth::user() && Auth::user()->name === 'hello home')
+                        {{-- @if(Auth::user() && Auth::user()->name === 'hello home')
                         <a href="{{ route('properties.edit', $property->id) }}" class="btn btn-warning mt-4">Edit Property</a>
                         <form method="POST" action="{{ route('properties.destroy', $property->id) }}" onsubmit="return confirm('Are you sure you want to delete this property?');" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger mt-4">Delete Property</button>
+
+                            <button type="submit" class="btn btn-danger mt-4"    data-confirm-delete="true">Delete Property</button>
                         </form>
-                    @endif
+                    @endif --}}
                     </div>
                     <div id="map">
                         <div className='maps'><iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Errachidia+(My%20Business%20Name)&amp;t=h&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.gps.ie/">gps tracker sport</a></iframe></div>
@@ -228,6 +237,24 @@
 
         });
     </script>
+    <script>
+        function confirmDelete(propertyId) {
+            Swal.fire({
+                title: 'Delete Property',
+                text: "Are you sure you want to delete this property?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('delete-form-' + propertyId).submit();
+                }
+            });
+        }
+    </script>
+
 
 </body>
 </html>

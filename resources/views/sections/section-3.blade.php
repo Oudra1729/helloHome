@@ -121,34 +121,89 @@
 </section>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
+        // Carousel Variables
         const carouselInner = document.querySelector('.carousel-inner');
-        const items = document.querySelectorAll('.carousel .item');
-        const itemCount = items.length;
+        const carouselItems = document.querySelectorAll('.carousel .item');
+        const carouselItemCount = carouselItems.length;
         const itemsPerSlide = 3;
-        let currentIndex = 0;
+        let carouselCurrentIndex = 0;
+        let carouselInterval;
 
-        // Check if animation is needed
-        if (itemCount > itemsPerSlide) {
-            function showNextSlide() {
-                currentIndex++;
-                const offset = -currentIndex * (100 / itemsPerSlide);
-                carouselInner.style.transform = `translateX(${offset}%)`;
+        // Image Slider Variables
+        const imageContainers = document.querySelectorAll('.image-container');
 
-                if (currentIndex >= itemCount / itemsPerSlide) {
-                    // Reset to the first item for a seamless effect
-                    setTimeout(() => {
-                        carouselInner.style.transition = 'none';
-                        carouselInner.style.transform = 'translateX(0)';
-                        currentIndex = 0;
-                        // Force reflow to reset transition
-                        carouselInner.offsetHeight;
-                        carouselInner.style.transition = 'transform 1s ease';
-                    }, 1000); // 1000ms corresponds to the transition duration
-                }
+        // Function to show the next slide in the carousel
+        const showNextSlide = () => {
+            carouselCurrentIndex++;
+            const offset = -carouselCurrentIndex * (100 / itemsPerSlide);
+            carouselInner.style.transform = `translateX(${offset}%)`;
+
+            if (carouselCurrentIndex >= carouselItemCount / itemsPerSlide) {
+                // Reset to the first item for a seamless effect
+                setTimeout(() => {
+                    carouselInner.style.transition = 'none';
+                    carouselInner.style.transform = 'translateX(0)';
+                    carouselCurrentIndex = 0;
+                    // Force reflow to reset transition
+                    carouselInner.offsetHeight;
+                    carouselInner.style.transition = 'transform 1s ease';
+                }, 1000); // 1000ms corresponds to the transition duration
+            }
+        };
+
+        // Function to show the next image in the slider
+        const showNextImage = (images, currentIndex) => {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add('active');
+            return currentIndex;
+        };
+
+        // Initialize carousels if needed
+        if (carouselItemCount > itemsPerSlide) {
+            carouselInterval = setInterval(showNextSlide, 4000); // Change slide every 4 seconds
+        }
+
+        // Initialize image sliders
+        imageContainers.forEach(container => {
+            const images = container.querySelectorAll('img');
+            let imageCurrentIndex = 0;
+
+            // Show the first image initially
+            if (images.length > 0) {
+                images[0].classList.add('active');
             }
 
-            setInterval(showNextSlide, 4000); // Change slide every 4 seconds
-        }
+            // Change images every 3 seconds
+            let imageInterval = setInterval(() => {
+                imageCurrentIndex = showNextImage(images, imageCurrentIndex);
+            }, 3000);
+
+            // Pause the interval on mouse enter and resume on mouse leave
+            container.addEventListener('mouseenter', () => {
+                clearInterval(imageInterval);
+            });
+
+            container.addEventListener('mouseleave', () => {
+                imageInterval = setInterval(() => {
+                    imageCurrentIndex = showNextImage(images, imageCurrentIndex);
+                }, 3000);
+            });
+
+            // Change image on click
+            container.addEventListener('click', () => {
+                imageCurrentIndex = showNextImage(images, imageCurrentIndex);
+            });
+        });
+
+        // Clean up intervals when page is unloaded (optional)
+        window.addEventListener('beforeunload', () => {
+            if (carouselInterval) clearInterval(carouselInterval);
+            imageContainers.forEach(container => {
+                const imageInterval = container.dataset.intervalId;
+                if (imageInterval) clearInterval(parseInt(imageInterval));
+            });
+        });
     });
 </script>
 
