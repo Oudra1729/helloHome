@@ -81,7 +81,7 @@
                 <div class="item-img image-container">
                     <label><h2>{{ $property->status }}</h2></label>
                     @foreach ($property->images as $image)
-                        <img src="{{ asset('storage/images/' . $image->image_path) }}" alt="Image of {{ $property->city }}">
+                        <img src="{{ asset('storage/' . $image->image_path) }}" alt="Image of {{ $property->city }}">
                     @endforeach
                 </div>
                 <div class="item-body">

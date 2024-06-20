@@ -86,7 +86,7 @@
             <h1>{{ $property->status }} - {{ $property->city }}</h1>
             <div class="image-container">
                 @foreach ($images as $image)
-                    <img src="{{ asset('storage/' . $image->image_path) }}" alt="Image of {{ $property->city }}" class="animate__animated animate__zoomIn">
+                    <img src="{{ asset('storage/'. $image->image_path) }}" alt="Image of {{ $property->city }}" class="animate__animated animate__zoomIn">
                 @endforeach
             </div>
             <div class="property-info mt-4">
@@ -171,13 +171,12 @@
         });
     });
 </script>
-
 @if(Auth::user() && Auth::user()->name === 'hello home')
-    <a href="{{ route('properties.edit', $property->id) }}" class="btn btn-warning mt-4">Edit Property</a>
+    <a href="{{ route('properties.edit', $property->id) }}" class="btn btn-warning mt-4">Modifier la Propriété</a>
     <form id="delete-form-{{ $property->id }}" method="POST" action="{{ route('properties.destroy', $property->id) }}" style="display:inline;">
         @csrf
         @method('DELETE')
-        <button type="button" class="btn btn-danger mt-4" onclick="confirmDelete({{ $property->id }})">Delete Property</button>
+        <button type="button" class="btn btn-danger mt-4" onclick="confirmDelete({{ $property->id }})">Supprimer la Propriété</button>
     </form>
 @endif
 
@@ -237,23 +236,24 @@
 
         });
     </script>
-    <script>
-        function confirmDelete(propertyId) {
-            Swal.fire({
-                title: 'Delete Property',
-                text: "Are you sure you want to delete this property?",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    document.getElementById('delete-form-' + propertyId).submit();
-                }
-            });
-        }
-    </script>
+<script>
+    function confirmDelete(propertyId) {
+        Swal.fire({
+            title: 'Supprimer la Propriété',
+            text: "Êtes-vous sûr de vouloir supprimer cette propriété ?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Oui, supprimez-la !',
+            cancelButtonText: 'Annuler'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('delete-form-' + propertyId).submit();
+            }
+        });
+    }
+</script>
 
 
 </body>

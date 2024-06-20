@@ -15,9 +15,9 @@
         <form action="{{ route('search') }}" method="GET" class="actions-form">
             <div class="choices">
                 <label for="a" class="choice-label">Acheter</label>
-                <input type="radio" name="status" id="a" value="vendre">
+                <input type="radio" name="status" id="a" value="À vendre">
                 <label for="l" class="choice-label">Louer</label>
-                <input type="radio" name="status" id="l" value="louer">
+                <input type="radio" name="status" id="l" value="À louer">
                 {{-- <label for="v" class="choice-label">Vendre</label>
                 <input type="radio" name="status" id="v" value="vendre"> --}}
             </div>
