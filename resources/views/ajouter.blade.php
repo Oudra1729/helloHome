@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+</head>
+
 <div class="container">
     <h1>Ajouter une nouvelle propriété</h1>
     <form action="{{ route('properties.store') }}" method="POST" enctype="multipart/form-data">
