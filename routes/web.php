@@ -1,56 +1,49 @@
 <?php
+
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-// Display all properties and home page
+// Home and properties routes
 Route::get('/', [PropertyController::class, 'index'])->name('home');
 Route::get('/acceuil', [PropertyController::class, 'index']);
 Route::get('/properties', [PropertyController::class, 'index'])->name('properties.index');
 
-// Display properties for sale and rent
+// Properties for sale and rent
 Route::get('/properties/achats', [PropertyController::class, 'acheter'])->name('properties.achats');
 Route::get('/properties/louer', [PropertyController::class, 'louer'])->name('properties.louer');
 
-// Display property details
+// Property details and search
 Route::get('/details/{id}', [PropertyController::class, 'show'])->name('details');
-
-// Search route
 Route::get('/result', [PropertyController::class, 'search'])->name('search');
 
-// Routes for authenticated users
+// Authenticated user routes
 Route::middleware(['auth'])->group(function () {
     Route::get('/properties/create', [PropertyController::class, 'create'])->name('properties.create');
     Route::post('/properties', [PropertyController::class, 'store'])->name('properties.store');
 
-    // Image upload routes
-    // Route::post('/image/create', [ImageController::class, 'store'])->name('image.store');
+    // Edit, update, and delete properties
+    Route::get('/properties/{property}/edit', [PropertyController::class, 'edit'])->name('properties.edit');
+    Route::put('/properties/{property}', [PropertyController::class, 'update'])->name('properties.update');
+    Route::delete('/properties/{property}', [PropertyController::class, 'destroy'])->name('properties.destroy');
+
+    // Image upload
     Route::post('/images/store', [ImageController::class, 'store'])->name('images.store');
+    Route::get('/insertImages', [ImageController::class, 'create'])->name('insertImages');
 });
 
 // Authentication routes
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
-Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-// Auth scaffold routes
+// Auth scaffolding
 Auth::routes();
 
 // Redirect to home after login
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/properties/achater', [PropertyController::class, 'vender'])->name('properties.achats');
-
-
-Route::get('/properties/{property}/edit', [PropertyController::class, 'edit'])->name('properties.edit');
-Route::put('/properties/{property}', [PropertyController::class, 'update'])->name('properties.update');
-Route::delete('/properties/{property}', [PropertyController::class, 'destroy'])->name('properties.destroy');
-
-Route::post('properties/create', [PropertyController::class, 'store'])->name('properties.vender');
-
-Route::get('/insertImages',[ImageController::class ,'create'])->name('insertImages');
-
-
-// Route::get('/get-cities', [PropertyController::class, 'getCities'])->name('get-cities');
+// Remove redundant route
+// Route::post('properties/create', [PropertyController::class, 'store'])->name('properties.vender'); // Duplicate
